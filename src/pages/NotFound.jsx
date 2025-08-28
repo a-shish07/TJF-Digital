@@ -15,13 +15,13 @@ const NotFound = () => {
         </div>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link to="/" className="btn-primary inline-flex items-center">
+          <Link to="/" className="btn-primary inline-flex items-center px-6 py-3">
             <Home size={20} className="mr-2" />
             Go Home
           </Link>
           <button 
             onClick={() => window.history.back()} 
-            className="btn-secondary inline-flex items-center"
+            className="btn-secondary inline-flex items-center px-6 py-3"
           >
             <ArrowLeft size={20} className="mr-2" />
             Go Back
