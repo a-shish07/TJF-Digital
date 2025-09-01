@@ -196,7 +196,7 @@ const Blog = () => {
       {/* Hero Section */}
       <motion.section
         ref={heroRef}
-        className="relative min-h-[75vh] bg-mesh-gradient flex items-center justify-center"
+        className="relative py-16 bg-mesh-gradient flex items-center justify-center"
         style={{ y, opacity }}
       >
         {/* Background Elements */}
@@ -330,38 +330,7 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Category Filter */}
-      {/* <section className="py-12 bg-gray-50">
-        <div className="container-max">
-          <motion.div 
-            className="flex flex-wrap gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            {categories.map((category, index) => (
-              <motion.button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                  selectedCategory === category
-                    ? 'bg-gradient-primary text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-primary-50 hover:text-primary-600 border border-gray-200'
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05, duration: 0.4 }}
-                viewport={{ once: true }}
-              >
-                {category}
-              </motion.button>
-            ))}
-          </motion.div>
-        </div>
-      </section> */}
+
 
       {/* Featured Posts */}
       <section className="section-padding bg-white">
@@ -425,18 +394,7 @@ const Blog = () => {
 
                 {/* Content */}
                 <div className="p-8">
-                  {/* <div className="flex items-center justify-between mb-4 text-sm text-gray-500">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex items-center space-x-2">
-                        <Calendar size={14} />
-                        <span>{new Date(post.date).toLocaleDateString()}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Clock size={14} />
-                        <span>{post.readTime}</span>
-                      </div>
-                    </div>
-                  </div> */}
+                 
 
                   <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2">
                     {post.title}

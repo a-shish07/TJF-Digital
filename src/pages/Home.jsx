@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { useInView as useIntersectionObserver } from "react-intersection-observer";
 import AnimatedCounter from "../components/AnimatedCounter";
 import HeroBackgroundVideo from "../components/HeroBackgroundVideo";
@@ -11,10 +11,8 @@ import {
   Award,
   TrendingUp,
   Clock,
-  Sparkles,
   Rocket,
   Star,
-  Globe,
   Zap,
   Target,
   Shield,
@@ -23,18 +21,13 @@ import {
   Search,
   Megaphone,
   Eye,
-  Play,
   ChevronRight,
   Heart,
-  Building,
   Code,
   Lightbulb,
   Trophy,
   Phone,
 } from "lucide-react";
-// Use public URLs for assets in Vite/React. Do not import from public.
-// Place your file at public/video/hero.mp4 and reference as "/video/hero.mp4".
-import Video2 from "../../public/video/video2.mp4";
 
 const Home = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -60,7 +53,7 @@ const Home = () => {
     {
       title: "Digital Marketing",
       description:
-        "Transform your brand into a digital powerhouse with our comprehensive marketing strategies that deliver exceptional ROI and sustainable growth.",
+        "Transform your brand into a digital powerhouse with our comprehensive marketing strategies that deliver exceptional ROI and sustainable growth to your product .",
       icon: Megaphone,
       gradient: "from-pink-500 to-rose-600",
       features: [
@@ -75,7 +68,7 @@ const Home = () => {
     {
       title: "SEO Optimization",
       description:
-        "Dominate search rankings and drive qualified organic traffic with our advanced SEO strategies that establish your brand as an industry authority.",
+        "Dominate search rankings and drive qualified organic traffic with our advanced SEO strategies that establish your brand as an industry authority and secure long-term growth.",
       icon: Search,
       gradient: "from-green-500 to-teal-600",
       features: [
@@ -215,7 +208,7 @@ const Home = () => {
     {
       title: "Design",
       icon: Lightbulb,
-      description: "Creating innovative solutions tailored to you",
+      description: "Creating innovative solutions tailored",
     },
     {
       title: "Develop",
@@ -294,7 +287,6 @@ const Home = () => {
   ];
 
   // Reusable marquee row for smooth, infinite scrolling logos (enhanced large cards)
-
   const MarqueeRow = ({ items, direction = "left", speed = 40 }) => {
     const isLeft = direction === "left";
 
@@ -361,18 +353,17 @@ const Home = () => {
       >
         {/* Background Video */}
         <HeroBackgroundVideo
-          mp4Src="/video/video2.mp4"
+          mp4Src="/video/video3.mp4"
           poster="/video/hero-poster.jpg"
-          // blurPx={2}
           overlayClass="bg-black/50"
           playbackRate={1}
         />
         <div className="absolute inset-0 pattern-grid opacity-20"></div>
 
         {/* Headline at top (under header) */}
-        <div className="relative z-10 w-full text-center mt-4">
+        <div className="relative z-10 w-full text-center mt-4 px-4">
           <motion.h1
-            className="text-2xl md:text-3xl lg:text-4xl font-bold font-serif   text-white leading-none"
+            className="text-2xl md:text-3xl lg:text-3xl xl:text-4xl font-bold font-serif text-white leading-tight"
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
@@ -384,9 +375,9 @@ const Home = () => {
         </div>
 
         {/* Paragraph at bottom */}
-        <div className="relative z-10 w-full text-center mb-6 px-6">
+        <div className="relative z-10 w-full text-center mb-6 px-4">
           <motion.p
-            className="text-base md:text-xl text-white max-w-4xl mx-auto leading-tight font-medium text-center"
+            className="text-base md:text-lg lg:text-xl text-white max-w-3xl lg:max-w-4xl mx-auto leading-snug lg:leading-tight font-medium text-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 1 }}
@@ -455,57 +446,66 @@ const Home = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8  m-4 sm:m-0">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={index}
-                  className="text-center group relative"
-                  initial={{ opacity: 0, scale: 0.5, y: 50 }}
-                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ delay: index * 0.15, duration: 0.8 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                >
-                  {/* Background Glow */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"></div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4  gap-8 m-4 sm:m-0 lg:m-4">
+  {stats.map((stat, index) => {
+    const Icon = stat.icon;
+    return (
+      <motion.div
+        key={index}
+        className="text-center group relative"
+        initial={{ opacity: 0, scale: 0.5, y: 50 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ delay: index * 0.15, duration: 0.8 }}
+        viewport={{ once: true }}
+        whileHover={{ scale: 1.05, y: -5 }}
+      >
+        {/* Background Glow */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"></div>
 
-                  <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 group-hover:border-white/20 transition-all duration-0">
-                    <motion.div
-                      className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 rounded-2xl mb-6 group-hover:from-primary-500/30 group-hover:to-secondary-500/30 transition-all duration-100 backdrop-blur-sm border border-white/10"
-                      whileHover={{ rotate: 360, scale: 1.2 }}
-                      transition={{ duration: 0.4 }}
-                    >
-                      <Icon className="h-10 w-10 text-white" />
-                    </motion.div>
+        {/* Card Container */}
+        <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 
+                        group-hover:border-white/20 transition-all duration-300 
+                        flex flex-col justify-between h-full">
+          {/* Icon */}
+          <motion.div
+            className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 
+                       rounded-2xl mb-6 group-hover:from-primary-500/30 group-hover:to-secondary-500/30 
+                       transition-all duration-100 backdrop-blur-sm border border-white/10 mx-auto"
+            whileHover={{ rotate: 360, scale: 1.2 }}
+            transition={{ duration: 0.4 }}
+          >
+            <Icon className="h-10 w-10 text-white" />
+          </motion.div>
 
-                    <div className="text-4xl lg:text-4xl font-bold mb-3 text-white">
-                      <AnimatedCounter
-                        end={stat.number}
-                        duration={3}
-                        delay={index * 0.3}
-                        suffix={stat.suffix || ""}
-                        className="text-gradient-alt"
-                      />
-                    </div>
-
-                    <div className="text-gray-300 font-bold  text-lg sm:text-2xl">
-                      {stat.label}
-                    </div>
-
-                    {/* Animated Border */}
-                    <motion.div
-                      style={{
-                        background:
-                          "linear-gradient(white, white) padding-box, linear-gradient(135deg, #6366f1, #ec4899) border-box",
-                      }}
-                    />
-                  </div>
-                </motion.div>
-              );
-            })}
+          {/* Counter */}
+          <div className="text-4xl lg:text-4xl font-bold mb-3 text-white">
+            <AnimatedCounter
+              end={stat.number}
+              duration={3}
+              delay={index * 0.3}
+              suffix={stat.suffix || ""}
+              className="text-gradient-alt"
+            />
           </div>
+
+          {/* Label */}
+          <div className="text-gray-300 font-bold text-lg sm:text-2xl text-center line-clamp-2">
+            {stat.label}
+          </div>
+
+          {/* Animated Border */}
+          <motion.div
+            style={{
+              background:
+                "linear-gradient(white, white) padding-box, linear-gradient(135deg, #6366f1, #ec4899) border-box",
+            }}
+          />
+        </div>
+      </motion.div>
+    );
+  })}
+</div>
+
 
           {/* Bottom CTA */}
           <motion.div

@@ -29,13 +29,19 @@ const Header = () => {
       icon: Sparkles,
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Web Design', href: '/services' },
-        { name: 'Digital Marketing', href: '/services' },
-        { name: 'SEO Services', href: '/services' },
-        { name: 'Graphics Design', href: '/services' },
-        { name: 'Paid Advertisement', href: '/services' },
-        { name: 'Video Marketing', href: '/services' },
-        { name: 'Influencer Marketing', href: '/services' }
+        { name: 'Web Design & Development', href: '/services/web-design' },
+        { name: 'Digital Marketing', href: '/services/digital-marketing' },
+        { name: 'SEO Services', href: '/services/seo' },
+        { name: 'GMB (Google My Business)', href: '/services/gmb' },
+        { 
+          name: 'Paid Advertisement', 
+          href: '/services/paid-ads', 
+          children: [
+            { name: 'Google Ads', href: '/services/paid-ads/google' },
+            { name: 'LinkedIn Ads', href: '/services/paid-ads/linkedin' },
+            { name: 'Meta Ads', href: '/services/paid-ads/meta' },
+          ]
+        }
       ]
     },
     { name: 'Blog', href: '/blog', icon: Award },
@@ -107,19 +113,19 @@ const Header = () => {
 >
 
         <nav className="container-max">
-          <div className="flex justify-between items-center py-6 mx-4 md:mx-2">
+          <div className="flex justify-between items-center py-4 lg:py-4 xl:py-6 mx-4 my-2 lg:my-1 xl:my-0">
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Link to="/" className="flex items-center group">
-                <Logo size="lg" theme="dark" showText={true} />
+                <Logo size="md" theme="dark" showText={true} className="md:scale-105 lg:scale-100 xl:scale-110" />
               </Link>
             </motion.div>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-4 ">
+            <div className="hidden lg:flex items-center gap-2 xl:gap-4 ">
               {navigation.map((item, index) => {
                 const Icon = item.icon;
                 return (
@@ -136,7 +142,7 @@ const Header = () => {
                     >
                       <Link
                         to={item.href}
-                        className={` flex items-center space-x-2 font-semibold transition-all duration-300 py-2 px-4 rounded-xl group relative ${
+                        className={` flex items-center gap-1 xl:gap-2 font-semibold transition-all duration-300 py-2 px-3 xl:px-4 rounded-xl group relative ${
                           isActive(item.href)
                             ? 'text-primary-600 bg-primary-50'
                             : 'text-gray-700 hover:text-primary-600 hover:bg-primary-50/50'
@@ -146,7 +152,7 @@ const Header = () => {
                         <span>{item.name}</span>
                         {item.hasDropdown && (
                           <ChevronDown 
-                            size={14} 
+                            size={12} 
                             className={`transition-transform duration-300 ${
                               activeDropdown === item.name ? 'rotate-180' : ''
                             }`}
@@ -160,7 +166,7 @@ const Header = () => {
                     <AnimatePresence>
                       {item.hasDropdown && activeDropdown === item.name && (
                         <motion.div
-                          className=" absolute top-full left-0 mt-2 w-64 glass-effect rounded-2xl shadow-2xl  z-500"
+                          className=" absolute top-full left-0 mt-2 w-56 xl:w-64 glass-effect !bg-slate-100 rounded-2xl shadow-2xl  z-50"
                           variants={dropdownVariants}
                           initial="initial"
                           animate="animate"
@@ -173,16 +179,38 @@ const Header = () => {
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: dropIndex * 0.05 }}
                             >
-                              <Link
-                                to={dropItem.href}
-                                className=" flex items-center justify-between px-6 py-3 text-gray-700 hover:text-primary-600  transition-all duration-300 group bg-white"
-                              >
-                                <span className="font-medium">{dropItem.name}</span>
-                                <ArrowUpRight 
-                                  size={14} 
-                                  className=" opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1"
-                                />
-                              </Link>
+                              <div className="relative group/drop">
+                                <Link
+                                  to={dropItem.href}
+                                  className=" flex items-center justify-between px-4 xl:px-6 py-3 text-gray-700 hover:text-primary-600  transition-all duration-300 group"
+                                >
+                                  <span className="font-medium">{dropItem.name}</span>
+                                  <ArrowUpRight 
+                                    size={14} 
+                                    className=" opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1"
+                                  />
+                                </Link>
+                                {dropItem.children && (
+                                  <motion.div
+                                    className="hidden absolute top-0 left-full ml-2 w-52 xl:w-56 glass-effect rounded-2xl shadow-2xl group-hover/drop:block"
+                                    variants={dropdownVariants}
+                                    initial="initial"
+                                    animate="animate"
+                                    exit="exit"
+                                  >
+                                    {dropItem.children.map((child) => (
+                                      <Link
+                                        key={child.name}
+                                        to={child.href}
+                                        className="flex items-center justify-between px-5 py-3 text-gray-700 hover:text-primary-600 bg-white rounded-xl m-1"
+                                      >
+                                        <span className="font-medium">{child.name}</span>
+                                        <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
+                                      </Link>
+                                    ))}
+                                  </motion.div>
+                                )}
+                              </div>
                             </motion.div>
                           ))}
                         </motion.div>
@@ -200,10 +228,10 @@ const Header = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
-              <Link to="/contact" className="btn-glow group">
+              <Link to="/contact" className="btn-glow group px-5 py-3 text-sm xl:text-base">
                 <span>Start Your Project</span>
                 <ArrowUpRight 
-                  size={28} 
+                  size={22} 
                   className="ml- group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"
                 />
               </Link>

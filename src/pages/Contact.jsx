@@ -169,28 +169,6 @@ const Contact = () => {
     
     try {
       console.log('Form submitted:', formData);
-      
-      // Here you would typically send the data to your backend
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 
-      //     'Content-Type': 'application/json',
-      //     'Accept': 'application/json'
-      //   },
-      //   body: JSON.stringify({
-      //     ...formData,
-      //     timestamp: new Date().toISOString(),
-      //     source: 'website_contact_form'
-      //   })
-      // });
-      
-      // if (!response.ok) {
-      //   throw new Error(`HTTP error! status: ${response.status}`);
-      // }
-      
-      // const result = await response.json();
-      
-      // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       setIsSubmitted(true);
@@ -285,7 +263,7 @@ const Contact = () => {
       {/* Hero Section */}
       <motion.section 
         ref={heroRef}
-        className="relative min-h-[70vh] bg-mesh-gradient flex items-center justify-center"
+        className="relative py-10 bg-mesh-gradient flex items-center justify-center"
         style={{ y }}
       >
         {/* Animated Background Elements */}
@@ -336,7 +314,7 @@ const Contact = () => {
             
             {/* Main Headline */}
             <motion.h1 
-              className="text-5xl md:text-6xl lg:text-7xl font-bold font-serif text-gray-900 mb-8 leading-none"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-serif text-gray-900 mb-6 lg:mb-8 leading-tight"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 1 }}

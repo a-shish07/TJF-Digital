@@ -28,13 +28,19 @@ const Footer = () => {
   const [isSubscribed, setIsSubscribed] = useState(false);
 
   const services = [
-    { name: "Web Design & Development", href: "/services" },
-    { name: "Digital Marketing", href: "/services" },
-    { name: "SEO Optimization", href: "/services" },
-    { name: "Brand & Visual Design", href: "/services" },
-    { name: "Paid Advertisement", href: "/services" },
-    { name: "Video Marketing", href: "/services" },
-    { name: "Influencer Marketing", href: "/services" }
+    { name: "Web Design & Development", href: "/services/web-design" },
+    { name: "Digital Marketing", href: "/services/digital-marketing" },
+    { name: "SEO Services", href: "/services/seo" },
+    { name: "GMB (Google My Business)", href: "/services/gmb" },
+    { 
+      name: "Paid Advertisement", 
+      href: "/services/paid-ads",
+      children: [
+        { name: "Google Ads", href: "/services/paid-ads/google" },
+        { name: "LinkedIn Ads", href: "/services/paid-ads/linkedin" },
+        { name: "Meta Ads", href: "/services/paid-ads/meta" }
+      ]
+    }
   ];
 
   const quickLinks = [
@@ -139,7 +145,7 @@ const Footer = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <Link to="/">
-                  <Logo size="lg" theme="light" showText={true} />
+                  <Logo size="lg" theme="light" showText={true} className="md:scale-105 lg:scale-110" />
                 </Link>
               </motion.div>
 
@@ -186,7 +192,7 @@ const Footer = () => {
               <Sparkles className="mr-2 h-5 w-5 text-primary-400" />
               Our Services
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-2">
               {services.map((service, index) => (
                 <motion.li
                   key={index}
@@ -194,19 +200,36 @@ const Footer = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   viewport={{ once: true }}
+                  className="relative"
                 >
-                  <Link
-                    to={service.href}
-                    className="flex items-center justify-between group text-gray-300 hover:text-white transition-all duration-300 py-2 px-3 rounded-lg hover:bg-white/5"
-                  >
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
-                      {service.name}
-                    </span>
-                    <ArrowRight
-                      size={14}
-                      className="opacity-0 group-hover:opacity-100 transition-all duration-300"
-                    />
-                  </Link>
+                  <div className="group">
+                    <Link
+                      to={service.href}
+                      className="flex items-center justify-between text-gray-300 hover:text-white transition-all duration-300 py-2 px-3 rounded-lg hover:bg-white/5"
+                    >
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">
+                        {service.name}
+                      </span>
+                      <ArrowRight
+                        size={14}
+                        className="opacity-0 group-hover:opacity-100 transition-all duration-300"
+                      />
+                    </Link>
+                    {service.children && (
+                      <div className="pl-3 mt-1 hidden group-hover:block">
+                        {service.children.map((child) => (
+                          <Link
+                            key={child.name}
+                            to={child.href}
+                            className="flex items-center justify-between text-gray-300 hover:text-white transition-all duration-300 py-1.5 px-3 rounded-lg hover:bg-white/5"
+                          >
+                            <span className="text-sm">{child.name}</span>
+                            <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </motion.li>
               ))}
             </ul>

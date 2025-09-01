@@ -77,19 +77,19 @@ const About = () => {
 
   const trustees = [
   {
-    name: "Dr. Abdul Quadir",
+    name: "Abdul Quadir",
     role: "Director",
-    specialization: "Public Health Strategy & Preventive Care",
+    specialization: "Digital Marketing Specialist",
     experience: "10+ Years",
     education: "MBA (Marketing), Delhi University",
     image: AbdulPhoto,
     description:
-      "Dr. Abdul Quadir is a dynamic force behind our public health initiatives. As Secretary and Co-Founder, he spearheads awareness campaigns and community outreach programs, blending healthcare insight with strategic vision to create lasting impact on public well-being.",
+      "Dr. Abdul Quadir is a dynamic force behind our digital marketing initiatives. As Secretary and Co-Founder, he spearheads awareness campaigns and community outreach programs, blending marketing insight with strategic vision to create lasting impact on public well-being.",
   },
   {
     name: "Aadil Saan",
     role: "Director",
-    specialization: "Non-Profit Administration & Social Development",
+    specialization: "",
     experience: "10+ Years",
     education: "Btech (ECE), Punjab University",
     image: Aadil,
@@ -148,6 +148,11 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
       role: 'Graphic Designer',
       expertise: 'Visual Design & Branding',
     },
+     {
+      name: 'Ehtesham Ali',
+      role: 'Graphic Designer',
+      expertise: 'Visual Design & Branding',
+    },
   ];
 
   const achievements = [
@@ -194,7 +199,7 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
       {/* Hero Section */}
       <motion.section 
         ref={heroRef}
-        className="relative min-h-screen bg-mesh-gradient flex items-center justify-center"
+        className="relative py-10 bg-mesh-gradient flex items-center justify-center"
         style={{ y, opacity }}
       >
         {/* Background Elements */}
@@ -239,7 +244,7 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
             </motion.div>
             
             <motion.h1 
-              className="hero-title text-gray-900 mb-8"
+              className="hero-title text-gray-900 mb-6 lg:mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 1 }}
@@ -250,7 +255,7 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
             </motion.h1>
             
             <motion.p 
-              className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed font-medium"
+              className="text-lg md:text-xl lg:text-2xl text-gray-700 mb-10 lg:mb-12 max-w-3xl lg:max-w-4xl mx-auto leading-relaxed font-medium"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 1 }}
@@ -412,7 +417,7 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
                     </div>
                     
                     <div className="flex items-center justify-between pt-6 border-t border-gray-100">
-                      <span className="text-sm font-semibold text-gray-500">{value.stats}</span>
+                      <span className="text-base font-semibold text-gray-500">{value.stats}</span>
                       <div className="flex space-x-1">
                         {[1,2,3,4,5].map((star) => (
                           <Star key={star} size={14} className="text-yellow-400 fill-current" />
@@ -476,7 +481,7 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
                       <div className="mt-4 text-center">
                         <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                           <User className="h-4 w-4 text-white mr-2" />
-                          <span className="text-white font-semibold text-sm">
+                          <span className="text-white font-semibold text-base">
                             {trustee.role}
                           </span>
                         </div>

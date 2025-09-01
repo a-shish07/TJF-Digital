@@ -249,14 +249,14 @@ const Services = () => {
     {
       step: '03',
       title: 'Testing & Optimization',
-      description: 'Rigorous testing and optimization ensure peak performance and user experience in the best possible way.',
+      description: 'Rigorous testing and optimization ensure peak performance and user experience .',
       icon: Zap,
       duration: '1-2 weeks'
     },
     {
       step: '04',
       title: 'Launch & Growth',
-      description: 'Strategic launch with ongoing optimization and growth initiatives to maximize your success with our expert guidance.',
+      description: 'Strategic launch with ongoing optimization and growth initiatives to maximize your success.',
       icon: Rocket,
       duration: '1-2 weeks'
     }
@@ -274,7 +274,7 @@ const Services = () => {
       {/* Hero Section */}
       <motion.section 
         ref={heroRef}
-        className="relative min-h-screen bg-mesh-gradient flex items-center justify-center"
+        className="relative py-16 bg-mesh-gradient flex items-center justify-center"
         // style={{ y, opacity }}
       >
         {/* Animated Background Elements */}
@@ -320,18 +320,18 @@ const Services = () => {
             </motion.div>
             
             <motion.h1 
-              className="hero-title text-gray-900 mb-8"
+              className="hero-title text-gray-900 mb-6 lg:mb-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
               Extraordinary 
-              <span className=" block mt-4 mb-4 text-primary-800">Digital Services</span>
+              <span className=" block mt-3 mb-3 text-primary-800">Digital Services</span>
               That Drive Results
             </motion.h1>
             
             <motion.p 
-              className="text-xl md:text-2xl text-gray-700 mb-12 max-w-4xl mx-auto leading-relaxed"
+              className="text-lg md:text-xl lg:text-2xl text-gray-700 mb-10 lg:mb-12 max-w-3xl lg:max-w-4xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
@@ -500,7 +500,15 @@ const Services = () => {
                         whileHover={{ scale: 1.02 }}
                       >
                         <Link 
-                          to="/contact" 
+                          to={(() => {
+                            const pathMap = {
+                              'web-design': '/services/web-design',
+                              'digital-marketing': '/services/digital-marketing',
+                              'seo': '/services/seo',
+                              'ads': '/services/paid-ads',
+                            };
+                            return pathMap[service.id] || '/contact';
+                          })()}
                           className="btn-primary group"
                         >
                           <span>Get Started</span>

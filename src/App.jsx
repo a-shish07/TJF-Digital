@@ -9,6 +9,16 @@ import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 
+// Service detail pages
+import WebDesignDevelopment from './pages/services/WebDesignDevelopment';
+import DigitalMarketing from './pages/services/DigitalMarketing';
+import SEO from './pages/services/SEO';
+import GMB from './pages/services/GMB';
+import PaidAds from './pages/services/PaidAds';
+import GoogleAds from './pages/services/GoogleAds';
+import LinkedInAds from './pages/services/LinkedInAds';
+import MetaAds from './pages/services/MetaAds';
+
 function App() {
   return (
     <Router>
@@ -17,7 +27,18 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
+
+          {/* Services index and detail routes */}
           <Route path="services" element={<Services />} />
+          <Route path="services/web-design" element={<WebDesignDevelopment />} />
+          <Route path="services/digital-marketing" element={<DigitalMarketing />} />
+          <Route path="services/seo" element={<SEO />} />
+          <Route path="services/gmb" element={<GMB />} />
+          <Route path="services/paid-ads" element={<PaidAds />} />
+          <Route path="services/paid-ads/google" element={<GoogleAds />} />
+          <Route path="services/paid-ads/linkedin" element={<LinkedInAds />} />
+          <Route path="services/paid-ads/meta" element={<MetaAds />} />
+
           <Route path="blog" element={<Blog />} />
           <Route path="contact" element={<Contact />} />
         </Route>
