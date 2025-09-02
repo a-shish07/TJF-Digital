@@ -1,9 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import SeoHead from '../../components/SeoHead';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import { Search, Gauge, LineChart, CheckCircle, Rocket, Sparkles, Star } from 'lucide-react';
+import ServicePage from '../../components/services/ServicePage';
+import { Search, LineChart, Sparkles } from 'lucide-react';
 
 const SEO = () => {
   const features = [
@@ -24,83 +23,122 @@ const SEO = () => {
         description="Technical, on-page, and content-led SEO to grow qualified organic traffic and conversions."
         keywords={["seo", "search engine optimization", "technical seo", "local seo", "schema"]}
       />
-      <motion.section className="relative min-h-[70vh] bg-mesh-gradient flex items-center justify-center">
-        <div className="absolute inset-0 pattern-grid opacity-20" />
-        <motion.div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl" animate={{ scale: [1,1.2,1], x: [0, 60, 0] }} transition={{ duration: 18, repeat: Infinity }} />
-        <motion.div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary-500/20 rounded-full blur-3xl" animate={{ scale: [1.2,1,1.2], x: [0,-60,0] }} transition={{ duration: 22, repeat: Infinity }} />
 
-        <div className="container-max text-center relative z-10">
-          <div className="mb-4 flex justify-center">
-            <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Services', to: '/services' }, { label: 'SEO', to: '/services/seo' }]} />
-          </div>
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-800 border border-white/30 shadow-lg mb-6">
-              <Sparkles className="mr-2 h-5 w-5 text-primary-600" />
-              Elite SEO Services
-            </span>
-            <h1 className="text-5xl md:text-6xl font-bold font-serif text-gray-900 mb-6">
-              Search Engine <span className="text-primary-700">Optimization</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-              Improve rankings, boost organic traffic, and convert visitors into customers with a robust SEO strategy.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      <section className="section-padding bg-white">
-        <div className="container-max grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <div className="flex items-center space-x-4 mb-6">
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-green-500 to-teal-600 shadow-lg">
-                <Search className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold font-serif text-gray-900">Win Organic Search</h2>
-                <p className="text-gray-600">Technical excellence + content authority.</p>
-              </div>
-            </div>
-            <ul className="space-y-4">
-              {features.map((f, i) => (
-                <li key={i} className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700 font-medium">{f}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {tools.map((t) => (
-                <span key={t} className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600">
-                  {t}
-                </span>
-              ))}
-            </div>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link to="/contact" className="btn-primary">
-                <span>Request SEO Audit</span>
-                <Gauge size={18} className="ml-2" />
-              </Link>
-              <Link to="/services" className="btn-ghost">Explore All Services</Link>
-            </div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-green-500 to-teal-600 shadow-2xl overflow-hidden text-white text-center">
-              <div className="absolute inset-0 pattern-dots opacity-20" />
-              <motion.div className="absolute -top-10 -right-10 w-32 h-32 bg-white/20 rounded-full blur-xl" animate={{ scale: [1, 1.2, 1], rotate: [0, 360] }} transition={{ duration: 10, repeat: Infinity }} />
-              <div className="relative z-10 space-y-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl mb-4">
-                  <LineChart className="h-10 w-10" />
-                </div>
-                <h3 className="text-2xl font-bold">Sustainable Organic Growth</h3>
-                <p className="text-white/90">From technical fixes to content strategy—everything aligned with business KPIs.</p>
-                <div className="flex justify-center space-x-2 text-yellow-300">
-                  {[1,2,3,4,5].map((s) => <Star key={s} size={18} className="fill-current" />)}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <ServicePage
+        hero={{
+          title: 'Search Engine',
+          highlight: 'Optimization',
+          subtitle: 'Rank higher. Grow qualified traffic.',
+          meshColors: ['from-emerald-300/25', 'to-teal-300/25'],
+          accentFrom: 'from-emerald-600',
+          accentTo: 'to-teal-600',
+          variant: 'seo',
+        }}
+        primary={{
+          icon: <Search className="h-8 w-8 text-white" />,
+          title: 'Win Organic Search',
+          kicker: 'Technical + content authority.',
+          features: [
+            'Technical SEO & CWV',
+            'On-page + internal linking',
+            'Content strategy & topical maps',
+          ],
+          chips: undefined,
+          variant: 'steps',
+          cta: { label: 'Contact Us', to: '/contact' },
+          ctaSecondary: { label: 'Explore All Services', to: '/services' },
+        }}
+        panel={{
+          gradient: 'bg-gradient-to-br from-emerald-600 to-teal-600',
+          icon: <LineChart className="h-10 w-10" />,
+          title: 'Sustainable Organic Growth',
+          subtitle: 'Technical fixes + content that compounds.',
+          stars: 5,
+        }}
+        ribbon={{ items: [
+          { label: 'Avg. Time to Traction', value: '90–120 days' },
+          { label: 'Indexed Pages Fixed', value: '2k+' },
+          { label: 'CWV Pass Rate', value: '85%+' },
+          { label: 'Keyword Growth', value: '↑ 50–200%' },
+        ]}}
+        logos={{ items: tools }}
+        showcase={{
+          title: 'SEO Pillars We Deploy',
+          items: [
+            { title: 'CWV & Tech Hygiene', note: 'Faster, crawlable, indexable' },
+            { title: 'On‑page Entities', note: 'Topical strength + internal links' },
+            { title: 'Content Roadmaps', note: 'Clusters, briefs, calendars' },
+            { title: 'Local SEO', note: 'GBP, citations, reviews' },
+            { title: 'Schema & Rich Results', note: 'Enhanced SERP presence' },
+            { title: 'White‑hat Links', note: 'Authority that compounds' },
+          ],
+        }}
+        about={{
+          title: 'What This Service Is',
+          subtitle: 'Technical, on‑page, and content‑led SEO to build authority, rank for meaningful keywords, and convert organic traffic.',
+          rightTitle: 'India‑first SEO that compounds',
+          rightText:
+            'We prioritize local search behavior, device constraints, and multi‑language content needs common to Indian audiences—without cutting corners on technical quality.',
+        }}
+        problemSolution={{
+          before: [
+            'Plateaued traffic, volatile rankings',
+            'Crawl/indexation issues, slow pages',
+            'Thin content, weak topical authority',
+            'Random backlinks, no strategy',
+          ],
+          deliver: [
+            'Technical SEO: CWV, architecture, schema',
+            'On‑page: entities, internal linking, meta, UX',
+            'Topic clusters + content roadmap',
+            'Local & multi‑location SEO; white‑hat links',
+          ],
+          impact: [
+            'Durable, compounding growth',
+            'Higher intent traffic that converts',
+            'Stronger authority vs competitors',
+            'Transparent progress with KPIs',
+          ],
+        }}
+        process={{
+          steps: [
+            { step: '01', title: 'Audit & Research', desc: 'Tech, content, competitors' },
+            { step: '02', title: 'Quick Wins', desc: 'Indexation, meta, internal links' },
+            { step: '03', title: 'Content Strategy', desc: 'Clusters, briefs, publishing' },
+            { step: '04', title: 'Authority Building', desc: 'Digital PR & relevant links' },
+            { step: '05', title: 'Measure & Iterate', desc: 'KPIs, dashboards, updates' },
+          ],
+        }}
+        outcomes={{
+          cards: [
+            { kpi: '↑ Organic 72% in 120 days', note: 'Non‑brand traffic growth' },
+            { kpi: '↑ Top‑10 Keywords 58%', note: 'Entity‑driven on‑page' },
+            { kpi: '↑ Leads 41% from SEO', note: 'Local & content synergy' },
+          ],
+        }}
+        testimonials={{
+          title: 'SEO Wins Our Clients Love',
+          items: [
+            { quote: 'From 0 to 30k organic in 9 months—clean, compounding growth.', author: 'Ananya M.', role: 'E‑com Founder' },
+            { quote: 'Tech SEO fixes alone lifted conversions 34%.', author: 'Prakash R.', role: 'Healthcare' },
+            { quote: 'Local SEO made our clinic the #1 choice in the area.', author: 'Dr. Kiran', role: 'Clinic' },
+          ],
+        }}
+        faqs={{
+          items: [
+            { q: 'How long to see results?', a: 'Expect strong traction in 3–6 months with compounding effects thereafter.' },
+            { q: 'Do you write content?', a: 'Yes—from strategy to briefs to publishing with internal link maps.' },
+            { q: 'Do you guarantee rankings?', a: 'We don’t game algorithms; we build durable growth with best practices.' },
+            { q: 'What about local SEO?', a: 'We implement GBP, citations, local content, and review strategies.' },
+          ],
+        }}
+        cta={{
+          title: 'Want stable, compounding organic growth?',
+          subtitle: 'Talk to us about a comprehensive SEO audit and 90‑day roadmap.',
+          to: '/contact',
+          label: 'Contact Us',
+        }}
+      />
     </div>
   );
 };

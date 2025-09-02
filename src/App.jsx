@@ -11,6 +11,8 @@ import ScrollToTop from './components/ScrollToTop';
 
 // Service detail pages
 import WebDesignDevelopment from './pages/services/WebDesignDevelopment';
+import WordPressWebsite from './pages/services/WordPressWebsite';
+import CodingWebsite from './pages/services/CodingWebsite';
 import DigitalMarketing from './pages/services/DigitalMarketing';
 import SEO from './pages/services/SEO';
 import GMB from './pages/services/GMB';
@@ -18,6 +20,7 @@ import PaidAds from './pages/services/PaidAds';
 import GoogleAds from './pages/services/GoogleAds';
 import LinkedInAds from './pages/services/LinkedInAds';
 import MetaAds from './pages/services/MetaAds';
+import SocialMediaMarketing from './pages/services/SocialMediaMarketing';
 
 function App() {
   return (
@@ -31,6 +34,8 @@ function App() {
           {/* Services index and detail routes */}
           <Route path="services" element={<Services />} />
           <Route path="services/web-design" element={<WebDesignDevelopment />} />
+          <Route path="services/web-design/wordpress" element={<WordPressWebsite />} />
+          <Route path="services/web-design/coding" element={<CodingWebsite />} />
           <Route path="services/digital-marketing" element={<DigitalMarketing />} />
           <Route path="services/seo" element={<SEO />} />
           <Route path="services/gmb" element={<GMB />} />
@@ -38,6 +43,7 @@ function App() {
           <Route path="services/paid-ads/google" element={<GoogleAds />} />
           <Route path="services/paid-ads/linkedin" element={<LinkedInAds />} />
           <Route path="services/paid-ads/meta" element={<MetaAds />} />
+          <Route path="services/social-media-marketing" element={<SocialMediaMarketing />} />
 
           <Route path="blog" element={<Blog />} />
           <Route path="contact" element={<Contact />} />

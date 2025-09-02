@@ -1,9 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import SeoHead from '../../components/SeoHead';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import { Monitor, Code, Smartphone, CheckCircle, Rocket, Sparkles, Star } from 'lucide-react';
+import ServicePage from '../../components/services/ServicePage';
+import { Monitor, Code, Smartphone, Sparkles } from 'lucide-react';
 
 const WebDesignDevelopment = () => {
   const features = [
@@ -27,99 +26,138 @@ const WebDesignDevelopment = () => {
         keywords={["web design", "web development", "react", "next.js", "tailwind", "landing pages"]}
       />
 
-      {/* Hero */}
-      <motion.section className="relative min-h-[70vh] bg-mesh-gradient flex items-center justify-center">
-        <div className="absolute inset-0 pattern-grid opacity-20" />
-        <motion.div 
-          className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl"
-          animate={{ scale: [1, 1.2, 1], x: [0, 60, 0], y: [0, -20, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div 
-          className="absolute bottom-20 right-10 w-96 h-96 bg-secondary-500/20 rounded-full blur-3xl"
-          animate={{ scale: [1.2, 1, 1.2], x: [0, -60, 0], y: [0, 30, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-        />
-
-        <div className="container-max text-center relative z-10">
-          <div className="mb-4 flex justify-center">
-            <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Services', to: '/services' }, { label: 'Web Design & Development', to: '/services/web-design' }]} />
-          </div>
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-800 border border-white/30 shadow-lg mb-6">
-              <Sparkles className="mr-2 h-5 w-5 text-primary-600" />
-              Premium Web Design & Development
-            </span>
-            <h1 className="text-5xl md:text-6xl font-bold font-serif text-gray-900 mb-6">
-              Web Design & <span className="text-primary-700">Development</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-              We craft fast, beautiful, conversion-focused websites that reflect your brand and drive measurable results.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      {/* Features */}
-      <section className="section-padding bg-white">
-        <div className="container-max grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <div className="flex items-center space-x-4 mb-6">
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 shadow-lg">
-                <Monitor className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold font-serif text-gray-900">Build for Impact</h2>
-                <p className="text-gray-600">Design that delights. Code that performs.</p>
+      <ServicePage
+        hero={{
+          title: 'Web Design &',
+          highlight: 'Development',
+          subtitle: 'Fast, beautiful, conversion-focused websites.',
+          meshColors: ['from-blue-300/25', 'to-purple-300/25'],
+          accentFrom: 'from-blue-600',
+          accentTo: 'to-purple-600',
+          variant: 'coding',
+          splitReverse: false,
+        }}
+        primary={{
+          icon: <Monitor className="h-8 w-8 text-white" />,
+          title: 'Build for Impact',
+          kicker: 'Design that delights. Code that performs.',
+          features: [
+            'Responsive, mobile-first design',
+            'High-performance, SEO-ready code',
+            'Conversion-optimized UI/UX',
+          ],
+          chips: undefined,
+          variant: 'cards',
+          cta: { label: 'Contact Us', to: '/contact' },
+          ctaSecondary: { label: 'Explore All Services', to: '/services' },
+        }}
+        panel={{
+          gradient: 'bg-gradient-to-br from-blue-600 to-purple-600',
+          icon: <Code className="h-10 w-10" />,
+          title: 'Lightning-Fast Websites',
+          subtitle: 'Core Web Vitals + delightful UX on every device.',
+          stars: 5,
+          foot: (
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+              <div className="flex items-center justify-center gap-2 text-base font-semibold">
+                <Smartphone size={18} /> Mobile-first • A11y • SEO
               </div>
             </div>
-            <ul className="space-y-4">
-              {features.map((f, i) => (
-                <li key={i} className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700 font-medium">{f}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {tech.map((t) => (
-                <span key={t} className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600">
-                  {t}
-                </span>
-              ))}
-            </div>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link to="/contact" className="btn-primary">
-                <span>Start Your Project</span>
-                <Rocket size={18} className="ml-2" />
-              </Link>
-              <Link to="/services" className="btn-ghost">Explore All Services</Link>
-            </div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-2xl overflow-hidden text-white text-center">
-              <div className="absolute inset-0 pattern-dots opacity-20" />
-              <motion.div className="absolute -top-10 -right-10 w-32 h-32 bg-white/20 rounded-full blur-xl" animate={{ scale: [1, 1.2, 1], rotate: [0, 360] }} transition={{ duration: 10, repeat: Infinity }} />
-              <div className="relative z-10 space-y-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl mb-4">
-                  <Code className="h-10 w-10" />
-                </div>
-                <h3 className="text-2xl font-bold">Lightning-Fast Websites</h3>
-                <p className="text-white/90">Optimized for Core Web Vitals with seamless experiences across devices.</p>
-                <div className="flex justify-center space-x-2 text-yellow-300">
-                  {[1,2,3,4,5].map((s) => <Star key={s} size={18} className="fill-current" />)}
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-                  <div className="text-sm text-white/70 mb-1">Mobile-First</div>
-                  <div className="flex items-center justify-center gap-2 text-lg font-semibold">
-                    <Smartphone size={18} /> Blazing Performance
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+          ),
+        }}
+        ribbon={{ items: [
+          { label: 'Avg. LCP on LPs', value: '≤ 1.5s' },
+          { label: 'Projects Delivered', value: '100+' },
+          { label: 'Client Satisfaction', value: '98%' },
+          { label: 'A/B Test Win Rate', value: '63%' },
+        ]}}
+        logos={{ items: tech }}
+        showcase={{
+          title: 'What Makes Our Builds Different',
+          items: [
+            { title: 'Component Libraries', note: 'Design systems for consistency' },
+            { title: 'CRO Architecture', note: 'Offers, forms, trust, UX' },
+            { title: 'Headless & CMS', note: 'Scale content with speed' },
+            { title: 'Accessibility', note: 'WCAG‑friendly experiences' },
+            { title: 'Analytics Ready', note: 'Events, UTM, heatmaps' },
+            { title: 'Future‑proof', note: 'Clear roadmaps & handover' },
+          ],
+        }}
+        about={{
+          title: 'What This Service Is',
+          subtitle:
+            'We build modern, responsive websites engineered for speed, clarity, and conversion—purpose-built to turn visitors into customers. From landing pages to full-scale sites, we design for outcomes, not just aesthetics.',
+          rightTitle: 'India-first, for every business model',
+          rightText:
+            'Whether you’re an MSME, D2C brand, local service business, clinic, or B2B firm, we craft interfaces and user journeys that match Indian buyer behavior, mobile usage patterns, and price sensitivity—without compromising quality.',
+        }}
+        problemSolution={{
+          before: [
+            'Slow load, high bounce, low trust',
+            'Generic templates that don’t convert',
+            'Poor mobile UX and unclear messaging',
+            'No analytics clarity or SEO foundation',
+          ],
+          deliver: [
+            'UX strategy, wireframes, brand-consistent design',
+            'High-performance builds (Core Web Vitals)',
+            'Conversion architecture (offers, forms, CTAs)',
+            'CMS/Headless, SEO-ready, analytics & event tracking',
+          ],
+          impact: [
+            'Faster sites → better SEO & conversions',
+            'Clear messaging → higher trust & inquiries',
+            'Scalable architecture → easier updates',
+            'Actionable analytics → smarter decisions',
+          ],
+        }}
+        process={{
+          steps: [
+            { step: '01', title: 'Discovery', desc: 'Brand, goals, users, competitors' },
+            { step: '02', title: 'UX & Content', desc: 'IA, wireframes, copy strategy' },
+            { step: '03', title: 'Visual Design', desc: 'High-fidelity UI & components' },
+            { step: '04', title: 'Build & Optimize', desc: 'Performance, SEO, tracking' },
+            { step: '05', title: 'Launch & Iterate', desc: 'QA, analytics, CRO' },
+          ],
+        }}
+        pricing={{
+          title: 'Flexible Packages',
+          tiers: [
+            { name: 'Landing Page', price: '₹15,000–₹35,000', features: ['Single page, high‑converting', 'Copy & design templates', 'Speed & SEO fundamentals'], cta: { label: 'Start Project', to: '/contact' } },
+            { name: 'Business Website', price: '₹45,000–₹1.5L', features: ['5–12 pages + blog', 'CMS/WordPress', 'Tracking + SEO best‑practices'], cta: { label: 'Get Quote', to: '/contact' } },
+            { name: 'E‑commerce / Headless', price: 'Custom', features: ['Catalog & checkout', 'Scalable architecture', 'CRO, analytics & feeds'], cta: { label: 'Book Discovery', to: '/contact' } },
+          ],
+        }}
+        outcomes={{
+          cards: [
+            { kpi: '↓ Bounce 30–50%', note: 'Mobile-first performance' },
+            { kpi: '↑ Conversions 25–60%', note: 'Clear offers + UX' },
+            { kpi: '≤ 1.5s LCP', note: 'On key landing pages' },
+          ],
+        }}
+        testimonials={{
+          title: 'What Clients Say',
+          items: [
+            { quote: 'Our new site halved load times and doubled demo requests.', author: 'Rohit S.', role: 'B2B SaaS Founder' },
+            { quote: 'Design quality and CRO guidance were top‑notch.', author: 'Sakshi K.', role: 'D2C Brand' },
+            { quote: 'Clean build, easy to manage, great Lighthouse scores.', author: 'Vivek P.', role: 'Clinic Owner' },
+          ],
+        }}
+        faqs={{
+          items: [
+            { q: 'How long does it take?', a: 'Typical builds take 2–6 weeks depending on scope and integrations.' },
+            { q: 'Do you provide content?', a: 'We can write copy and produce visuals or collaborate with your team.' },
+            { q: 'Will my site be SEO-ready?', a: 'Best-practice structure, metadata, schema (where relevant), and CWV focus.' },
+            { q: 'Do you handle maintenance?', a: 'Available as a retainer or ad‑hoc support after launch.' },
+          ],
+        }}
+        cta={{
+          title: 'Ready to turn your website into a growth engine?',
+          subtitle: 'Let’s scope the build and timelines that fit your goals.',
+          to: '/contact',
+          label: 'Contact Us',
+        }}
+      />
     </div>
   );
 };

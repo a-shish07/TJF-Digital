@@ -1,106 +1,163 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import SeoHead from '../../components/SeoHead';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import { MapPin, BadgeCheck, Route, CheckCircle, Rocket, Sparkles, Star } from 'lucide-react';
+import ServicePage from '../../components/services/ServicePage';
+import { MapPin, Star, Sparkles, Navigation } from 'lucide-react';
 
 const GMB = () => {
   const features = [
-    'Google Business Profile setup & optimization',
-    'Local citations & NAP consistency',
-    'Reviews strategy & automation (templates + flows)',
-    'Local content & posts (offers/events)',
-    'Maps ranking improvements (proximity, prominence)',
-    'Photos, services, and Q&A optimization',
+    'Complete Google Business Profile setup & optimization',
+    'Strategic local citations & NAP consistency across web',
+    'Reviews management system with automated workflows',
+    'Engaging local content & promotional posts',
+    'Maps ranking boost through proximity optimization',
+    'Professional photos, services, and Q&A management',
+    'Local SEO integration for maximum visibility',
+    'Competitor analysis and market positioning',
   ];
 
-  const tools = ['Google Business Profile', 'Local Schema', 'Citations', 'Reviews', 'UTM tracking'];
+  const tools = ['Google Business Profile', 'Local Schema Markup', 'Citation Building', 'Review Management', 'Local Analytics'];
 
   return (
     <div className="overflow-hidden">
       <SeoHead
-        title="GMB / Local SEO"
-        description="Dominate local search and Maps with Google Business Profile optimization, reviews strategy, and local content."
-        keywords={["gmb", "google my business", "local seo", "maps", "citations"]}
+        title="Google My Business & Local SEO Services"
+        description="Dominate local search results with comprehensive GMB optimization, strategic review management, and powerful local SEO strategies that drive foot traffic and calls."
+        keywords={["google my business", "gmb optimization", "local seo", "google maps", "local citations", "review management", "local search"]}
       />
-      <motion.section className="relative min-h-[70vh] bg-mesh-gradient flex items-center justify-center">
-        <div className="absolute inset-0 pattern-grid opacity-20" />
-        <motion.div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl" animate={{ scale: [1,1.2,1], x: [0, 60, 0] }} transition={{ duration: 18, repeat: Infinity }} />
-        <motion.div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary-500/20 rounded-full blur-3xl" animate={{ scale: [1.2,1,1.2], x: [0,-60,0] }} transition={{ duration: 22, repeat: Infinity }} />
 
-        <div className="container-max text-center relative z-10">
-          <div className="mb-4 flex justify-center">
-            <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Services', to: '/services' }, { label: 'GMB / Local SEO', to: '/services/gmb' }]} />
-          </div>
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-800 border border-white/30 shadow-lg mb-6">
-              <Sparkles className="mr-2 h-5 w-5 text-primary-600" />
-              Google My Business (GMB)
-            </span>
-            <h1 className="text-5xl md:text-6xl font-bold font-serif text-gray-900 mb-6">
-              Local SEO <span className="text-primary-700">& GMB</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-              Dominate local search and Maps results to capture high-intent customers in your area.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      <section className="section-padding bg-white">
-        <div className="container-max grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <div className="flex items-center space-x-4 mb-6">
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 shadow-lg">
-                <MapPin className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold font-serif text-gray-900">Be Found Locally</h2>
-                <p className="text-gray-600">Rank higher in local packs and Maps.</p>
-              </div>
-            </div>
-            <ul className="space-y-4">
-              {features.map((f, i) => (
-                <li key={i} className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700 font-medium">{f}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {tools.map((t) => (
-                <span key={t} className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600">
-                  {t}
-                </span>
-              ))}
-            </div>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link to="/contact" className="btn-primary">
-                <span>Boost Local Presence</span>
-                <BadgeCheck size={18} className="ml-2" />
-              </Link>
-              <Link to="/services" className="btn-ghost">Explore All Services</Link>
-            </div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-2xl overflow-hidden text-white text-center">
-              <div className="absolute inset-0 pattern-dots opacity-20" />
-              <motion.div className="absolute -top-10 -right-10 w-32 h-32 bg-white/20 rounded-full blur-xl" animate={{ scale: [1, 1.2, 1], rotate: [0, 360] }} transition={{ duration: 10, repeat: Infinity }} />
-              <div className="relative z-10 space-y-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl mb-4">
-                  <Route className="h-10 w-10" />
-                </div>
-                <h3 className="text-2xl font-bold">Win the Map Pack</h3>
-                <p className="text-white/90">Visibility where it matters most—nearby customers ready to buy.</p>
-                <div className="flex justify-center space-x-2 text-yellow-300">
-                  {[1,2,3,4,5].map((s) => <Star key={s} size={18} className="fill-current" />)}
-                </div>
+      <ServicePage
+        hero={{
+          title: 'Local SEO &',
+          highlight: 'GMB Mastery',
+          subtitle: 'Dominate your local market and become the go-to choice in your neighborhood.',
+          meshColors: ['from-emerald-300/25', 'to-teal-300/25'],
+          accentFrom: 'from-emerald-600',
+          accentTo: 'to-teal-600',
+          variant: 'gmb',
+          splitReverse: false,
+        }}
+        primary={{
+          icon: <MapPin className="h-8 w-8 text-white" />,
+          title: 'Be Found When It Matters',
+          kicker: 'Turn local searches into loyal customers.',
+          features: [
+            'Complete GMB profile optimization',
+            'Strategic review management system',
+            'Local content that converts searchers',
+          ],
+          chips: undefined,
+          variant: 'cards',
+          cta: { label: 'Dominate Local Search', to: '/contact' },
+          ctaSecondary: { label: 'Explore All Services', to: '/services' },
+        }}
+        panel={{
+          gradient: 'bg-gradient-to-br from-emerald-600 to-teal-600',
+          icon: <Navigation className="h-10 w-10" />,
+          title: 'Local Market Domination',
+          subtitle: 'From invisible to indispensable in your local area.',
+          stars: 5,
+          foot: (
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+              <div className="flex items-center justify-center gap-2 text-base font-semibold">
+                <Star size={18} /> Maps • Reviews • Local Rankings
               </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
+          ),
+        }}
+        ribbon={{ items: [
+          { label: 'Local Calls Increase', value: '↑ 75%' },
+          { label: 'Map Pack Rankings', value: 'Top 3' },
+          { label: 'Review Rating Boost', value: '+1.5★' },
+          { label: 'Local Visibility', value: '300%+' },
+        ]}}
+        logos={{ items: tools }}
+        showcase={{
+          title: 'What Makes Our GMB Strategy Unique',
+          items: [
+            { title: 'Complete Profile Mastery', note: 'Every field optimized for maximum impact' },
+            { title: 'Review Automation', note: 'Smart systems for consistent 5-star reviews' },
+            { title: 'Local Content Engine', note: 'Regular posts that engage and convert' },
+            { title: 'Citation Powerhouse', note: 'Consistent NAP across 50+ directories' },
+            { title: 'Competitor Intelligence', note: 'Stay ahead of local competition' },
+            { title: 'Performance Tracking', note: 'Clear metrics on calls, directions & visits' },
+          ],
+        }}
+        about={{
+          title: 'Transform Your Local Presence',
+          subtitle:
+            'We don\'t just optimize your Google My Business profile—we create a complete local marketing ecosystem that makes your business the obvious choice for customers in your area. From strategic review generation to compelling local content, we ensure you dominate every local search.',
+          rightTitle: 'Perfect for local Indian businesses',
+          rightText:
+            'Whether you\'re a restaurant in Delhi, a clinic in Mumbai, or a retail store in Bangalore, we understand the unique challenges of Indian local markets. Our strategies are tailored for Indian customer behavior, local competition, and regional search patterns.',
+        }}
+        problemSolution={{
+          before: [
+            'Invisible in local search results',
+            'Poor or inconsistent customer reviews',
+            'Competitors getting all the local traffic',
+            'Missing calls and walk-ins from Google searches',
+          ],
+          deliver: [
+            'Comprehensive GMB profile optimization',
+            'Strategic review management and generation',
+            'Regular engaging local content and posts',
+            'Multi-platform citation building and consistency',
+          ],
+          impact: [
+            'Dominate local search and map pack rankings',
+            'Consistent flow of positive customer reviews',
+            'Increased calls, directions, and website visits',
+            'Stronger local brand presence and trust',
+          ],
+        }}
+        process={{
+          steps: [
+            { step: '01', title: 'Local Market Analysis', desc: 'Competition research, keyword analysis, local opportunity mapping' },
+            { step: '02', title: 'Profile Optimization', desc: 'Complete GMB setup, category selection, description optimization' },
+            { step: '03', title: 'Review Strategy Setup', desc: 'Review generation systems, response templates, monitoring setup' },
+            { step: '04', title: 'Content & Citations', desc: 'Local content calendar, citation building, schema markup' },
+            { step: '05', title: 'Monitor & Scale', desc: 'Performance tracking, ongoing optimization, expansion strategies' },
+          ],
+        }}
+        pricing={{
+          title: 'Local SEO & GMB Packages',
+          tiers: [
+            { name: 'Local Starter', price: '₹8,000–₹15,000/mo', features: ['GMB setup & optimization', 'Basic review management', 'Monthly local posts', 'Core citations'], cta: { label: 'Start Local Journey', to: '/contact' } },
+            { name: 'Local Pro', price: '₹18,000–₹35,000/mo', features: ['Advanced GMB optimization', 'Automated review system', 'Weekly content & posts', '50+ citations & monitoring'], cta: { label: 'Dominate Locally', to: '/contact' } },
+            { name: 'Multi-Location', price: 'Custom', features: ['Enterprise GMB management', 'Multi-location strategy', 'Advanced analytics', 'Dedicated account manager'], cta: { label: 'Scale Your Presence', to: '/contact' } },
+          ],
+        }}
+        outcomes={{
+          cards: [
+            { kpi: '↑ Local Calls 75%', note: 'More qualified inquiries' },
+            { kpi: '↑ Directions 120%', note: 'Increased foot traffic' },
+            { kpi: '5★ Rating Average', note: 'Consistent review flow' },
+          ],
+        }}
+        testimonials={{
+          title: 'Local Success Stories',
+          items: [
+            { quote: 'Our restaurant bookings doubled within 2 months. The GMB optimization was incredible!', author: 'Rahul Sharma', role: 'Restaurant Owner, Delhi' },
+            { quote: 'From 2.8 to 4.7 stars and consistent patient flow. Best investment for our clinic.', author: 'Dr. Priya Patel', role: 'Dental Clinic, Mumbai' },
+            { quote: 'Footfall increased 300% and we\'re now the top-rated store in our area.', author: 'Ankur Singh', role: 'Electronics Store, Pune' },
+          ],
+        }}
+        faqs={{
+          items: [
+            { q: 'How quickly will I see results from GMB optimization?', a: 'Initial improvements in visibility typically appear within 2-4 weeks. Significant increases in calls and directions usually occur within 4-8 weeks of implementation.' },
+            { q: 'Do you handle multiple business locations?', a: 'Yes! We specialize in multi-location GMB management with consistent NAP data, coordinated review strategies, and location-specific content optimization.' },
+            { q: 'What if my business has negative reviews?', a: 'We implement comprehensive reputation management including professional response templates, review generation strategies, and ongoing monitoring to improve your overall rating.' },
+            { q: 'Is GMB optimization suitable for service-based businesses?', a: 'Absolutely! Service areas, home services, consultants, and B2B companies all benefit significantly from optimized GMB profiles and local SEO strategies.' },
+          ],
+        }}
+        cta={{
+          title: 'Ready to dominate your local market?',
+          subtitle: 'Let\'s make your business the first choice when customers search locally.',
+          to: '/contact',
+          label: 'Start Local Domination',
+        }}
+      />
     </div>
   );
 };

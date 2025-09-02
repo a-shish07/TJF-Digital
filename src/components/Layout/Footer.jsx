@@ -28,10 +28,18 @@ const Footer = () => {
   const [isSubscribed, setIsSubscribed] = useState(false);
 
   const services = [
-    { name: "Web Design & Development", href: "/services/web-design" },
+    { 
+      name: "Web Design & Development", 
+      href: "/services/web-design",
+      children: [
+        { name: "WordPress Website", href: "/services/web-design/wordpress" },
+        { name: "Coding Website", href: "/services/web-design/coding" }
+      ]
+    },
     { name: "Digital Marketing", href: "/services/digital-marketing" },
     { name: "SEO Services", href: "/services/seo" },
     { name: "GMB (Google My Business)", href: "/services/gmb" },
+    { name: "Social Media Marketing", href: "/services/social-media-marketing" },
     { 
       name: "Paid Advertisement", 
       href: "/services/paid-ads",

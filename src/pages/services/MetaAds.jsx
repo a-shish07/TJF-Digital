@@ -1,91 +1,163 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import SeoHead from '../../components/SeoHead';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import { Facebook, Target, CheckCircle, Rocket, Sparkles, Star } from 'lucide-react';
+import ServicePage from '../../components/services/ServicePage';
+import { Facebook, Instagram, Sparkles, Play } from 'lucide-react';
 
 const MetaAds = () => {
   const features = [
-    'Full-funnel Meta strategy (acquisition + retargeting)',
-    'Creative variations & hooks (UGC, carousels, reels)',
-    'Pixel, CAPI & event tracking (server-side)',
-    'Retargeting & lookalikes with exclusions',
+    'Full-funnel Facebook & Instagram advertising',
+    'Advanced creative testing and optimization',
+    'Pixel and Conversions API implementation',
+    'Lookalike and custom audience strategies',
+    'Video content and Reels advertising',
+    'E-commerce catalog and dynamic ads',
+    'Multi-platform campaign coordination',
+    'Attribution modeling and event tracking',
   ];
+
+  const tools = ['Meta Business Manager', 'Facebook Pixel', 'Conversions API', 'Meta Creative Hub', 'Advantage+ Shopping'];
 
   return (
     <div className="overflow-hidden">
       <SeoHead
-        title="Meta Ads (Facebook & Instagram)"
-        description="Full-funnel Meta advertising with creative iteration, pixel/CAPI tracking, and profitable scaling."
-        keywords={["meta ads", "facebook ads", "instagram ads", "capi", "pixel"]}
+        title="Meta Ads Management Services - Facebook & Instagram"
+        description="Drive massive reach and engagement with strategic Meta advertising. Advanced creative testing, audience targeting, and conversion optimization across Facebook and Instagram."
+        keywords={["meta ads", "facebook advertising", "instagram ads", "social media advertising", "facebook marketing", "instagram marketing", "video ads"]}
       />
-      <motion.section className="relative min-h-[60vh] bg-mesh-gradient flex items-center justify-center">
-        <div className="absolute inset-0 pattern-grid opacity-20" />
-        <div className="container-max text-center relative z-10">
-          <div className="mb-4 flex justify-center">
-            <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Services', to: '/services' }, { label: 'Paid Ads', to: '/services/paid-ads' }, { label: 'Meta Ads', to: '/services/paid-ads/meta' }]} />
-          </div>
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-800 border border-white/30 shadow-lg mb-6">
-              <Sparkles className="mr-2 h-5 w-5 text-primary-600" />
-              Meta Ads (Facebook & Instagram)
-            </span>
-            <h1 className="text-5xl md:text-6xl font-bold font-serif text-gray-900 mb-6">
-              Meta <span className="text-primary-700">Ads</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-              Build profitable funnels with creative testing and smart audience strategies.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
 
-      <section className="section-padding bg-white">
-        <div className="container-max grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <div className="flex items-center space-x-4 mb-6">
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-indigo-500 to-fuchsia-600 shadow-lg">
-                <Facebook className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold font-serif text-gray-900">Creative + Audience Fit</h2>
-                <p className="text-gray-600">Unlock scale with iterative learning.</p>
-              </div>
-            </div>
-            <ul className="space-y-4">
-              {features.map((f, i) => (
-                <li key={i} className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700 font-medium">{f}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link to="/contact" className="btn-primary">
-                <span>Request Meta Plan</span>
-                <Target size={18} className="ml-2" />
-              </Link>
-              <Link to="/services/paid-ads" className="btn-ghost">Back to Paid Ads</Link>
-            </div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-indigo-500 to-fuchsia-600 shadow-2xl overflow-hidden text-white text-center">
-              <div className="absolute inset-0 pattern-dots opacity-20" />
-              <div className="relative z-10 space-y-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl mb-4">
-                  <Facebook className="h-10 w-10" />
-                </div>
-                <h3 className="text-2xl font-bold">Scale Creatives That Convert</h3>
-                <p className="text-white/90">Frameworks for hooks, offers, and UGC that win.</p>
-                <div className="flex justify-center space-x-2 text-yellow-300">
-                  {[1,2,3,4,5].map((s) => <Star key={s} size={18} className="fill-current" />)}
-                </div>
+      <ServicePage
+        hero={{
+          title: 'Meta Ads',
+          highlight: 'Domination',
+          subtitle: 'Scale your business with the power of Facebook and Instagram advertising.',
+          meshColors: ['from-blue-300/25', 'to-pink-300/25'],
+          accentFrom: 'from-blue-600',
+          accentTo: 'to-pink-600',
+          variant: 'meta-ads',
+          splitReverse: false,
+        }}
+        primary={{
+          icon: <Facebook className="h-8 w-8 text-white" />,
+          title: 'Reach Billions of Users',
+          kicker: 'Creative excellence meets audience precision.',
+          features: [
+            'Advanced audience targeting and lookalikes',
+            'High-converting creative testing frameworks',
+            'Full-funnel campaign optimization',
+          ],
+          chips: undefined,
+          variant: 'cards',
+          cta: { label: 'Scale with Meta', to: '/contact' },
+          ctaSecondary: { label: 'Explore All Ads Services', to: '/services/paid-ads' },
+        }}
+        panel={{
+          gradient: 'bg-gradient-to-br from-blue-600 to-pink-600',
+          icon: <Play className="h-10 w-10" />,
+          title: 'Creative That Converts',
+          subtitle: 'Thumb-stopping content that drives action.',
+          stars: 5,
+          foot: (
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+              <div className="flex items-center justify-center gap-2 text-base font-semibold">
+                <Instagram size={18} /> Video • Stories • Feed • Reels
               </div>
             </div>
-          </motion.div>
-        </div>
-      </section>
+          ),
+        }}
+        ribbon={{ items: [
+          { label: 'Average ROAS', value: '4.5x' },
+          { label: 'Creative Win Rate', value: '78%' },
+          { label: 'Cost Reduction', value: '40%' },
+          { label: 'Reach Potential', value: '3B+' },
+        ]}}
+        logos={{ items: tools }}
+        showcase={{
+          title: 'What Makes Our Meta Campaigns Different',
+          items: [
+            { title: 'Creative Testing Lab', note: 'Systematic A/B testing for winning ads' },
+            { title: 'Audience Intelligence', note: 'Data-driven targeting and lookalikes' },
+            { title: 'Video First Strategy', note: 'Reels, Stories, and video content' },
+            { title: 'E-commerce Integration', note: 'Catalog ads and dynamic retargeting' },
+            { title: 'Advanced Tracking', note: 'Pixel + CAPI for accurate attribution' },
+            { title: 'Scale Protection', note: 'Maintain performance while growing spend' },
+          ],
+        }}
+        about={{
+          title: 'Meta Advertising Mastery',
+          subtitle:
+            'With over 3 billion active users across Facebook and Instagram, Meta platforms offer unparalleled reach and engagement opportunities. Our data-driven approach combines creative excellence with sophisticated targeting to deliver measurable results that scale with your business growth.',
+          rightTitle: 'Built for the Indian market',
+          rightText:
+            'From D2C brands in tier-1 cities to local businesses expanding nationwide, we understand Indian consumer behavior on social platforms. Our campaigns leverage cultural insights, regional preferences, and local trends to create authentic connections that convert.',
+        }}
+        problemSolution={{
+          before: [
+            'High ad costs with poor creative performance',
+            'Audiences getting fatigued quickly',
+            'Inconsistent campaign results and ROAS',
+            'Difficulty scaling without losing performance',
+          ],
+          deliver: [
+            'Systematic creative testing and optimization',
+            'Advanced audience segmentation and lookalikes',
+            'Full-funnel campaign architecture',
+            'Precise tracking and attribution setup',
+          ],
+          impact: [
+            'Lower cost per acquisition with higher ROAS',
+            'Fresh creative pipeline preventing audience fatigue',
+            'Predictable, scalable campaign performance',
+            'Clear attribution and business impact tracking',
+          ],
+        }}
+        process={{
+          steps: [
+            { step: '01', title: 'Strategy & Setup', desc: 'Account audit, pixel implementation, audience research, competitive analysis' },
+            { step: '02', title: 'Creative Development', desc: 'Ad concept creation, video production, design assets, copy testing' },
+            { step: '03', title: 'Campaign Launch', desc: 'Targeting setup, budget allocation, tracking configuration, launch execution' },
+            { step: '04', title: 'Optimize & Test', desc: 'Performance monitoring, A/B testing, audience optimization, creative iteration' },
+            { step: '05', title: 'Scale & Expand', desc: 'Budget scaling, new audience exploration, campaign expansion, reporting' },
+          ],
+        }}
+        pricing={{
+          title: 'Meta Ads Management Packages',
+          tiers: [
+            { name: 'Growth Starter', price: '₹18,000–₹35,000/mo', features: ['Campaign setup & management', 'Basic creative testing', 'Monthly reporting', 'Ad spend up to ₹2L'], cta: { label: 'Start Growing', to: '/contact' } },
+            { name: 'Scale Master', price: '₹40,000–₹75,000/mo', features: ['Advanced audience strategies', 'Video creative production', 'Weekly optimization', 'Ad spend up to ₹5L'], cta: { label: 'Scale Faster', to: '/contact' } },
+            { name: 'Enterprise Growth', price: 'Custom', features: ['Full creative studio', 'Multi-brand management', 'Custom integrations', 'Unlimited ad spend'], cta: { label: 'Enterprise Solution', to: '/contact' } },
+          ],
+        }}
+        outcomes={{
+          cards: [
+            { kpi: '↑ ROAS 4.5x', note: 'Optimized creative & targeting' },
+            { kpi: '↓ CAC by 40%', note: 'Better audience precision' },
+            { kpi: '↑ Reach 300%', note: 'Expanded audience discovery' },
+          ],
+        }}
+        testimonials={{
+          title: 'Meta Success Stories',
+          items: [
+            { quote: 'Our D2C brand scaled from ₹5L to ₹50L monthly revenue with their Meta strategy. ROI is incredible!', author: 'Sneha Agarwal', role: 'Fashion Brand Founder' },
+            { quote: 'Creative testing approach doubled our conversion rates. Finally found what resonates with our audience.', author: 'Karan Mehta', role: 'E-commerce Director' },
+            { quote: 'Lead quality improved 3x while cost per lead dropped by 45%. Meta ads are now our primary channel.', author: 'Ritika Sharma', role: 'EdTech Marketing Head' },
+          ],
+        }}
+        faqs={{
+          items: [
+            { q: 'How do you ensure consistent creative performance?', a: 'We use systematic A/B testing frameworks, analyze winning patterns, and maintain a continuous pipeline of fresh creative concepts to prevent audience fatigue.' },
+            { q: 'Can you help with video content creation?', a: 'Yes! We provide end-to-end video production including Reels, Stories, feed videos, and UGC-style content optimized for Meta platforms.' },
+            { q: 'What makes Meta ads different from Google ads?', a: 'Meta excels at discovery and visual storytelling, reaching people who aren\'t actively searching. It\'s perfect for building brand awareness and impulse purchases.' },
+            { q: 'How do you track conversions accurately?', a: 'We implement both Facebook Pixel and Conversions API for accurate attribution, plus integrate with your analytics tools for comprehensive tracking.' },
+          ],
+        }}
+        cta={{
+          title: 'Ready to dominate Facebook and Instagram?',
+          subtitle: 'Let\'s create Meta campaigns that turn social engagement into business growth.',
+          to: '/contact',
+          label: 'Launch Meta Strategy',
+        }}
+      />
     </div>
   );
 };

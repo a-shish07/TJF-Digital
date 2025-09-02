@@ -18,6 +18,7 @@ import {
   Star,
   Rocket,
   Monitor,
+  Code,
   Smartphone,
   Clock,
   Shield,
@@ -39,31 +40,58 @@ const Services = () => {
 
   const services = [
     {
-      id: 'web-design',
-      title: 'Web Design & Development',
-      shortDesc: 'Stunning, conversion-focused websites',
-      description: 'We craft extraordinary digital experiences that captivate your audience and drive measurable results. From dynamic websites to responsive designs, we create digital masterpieces that perform.',
+      id: 'wordpress-website',
+      title: 'WordPress Websites',
+      shortDesc: 'Professional CMS-powered websites',
+      description: 'Professional WordPress websites with stunning designs, easy content management, and powerful functionality. Perfect for businesses wanting quick, reliable web presence.',
       icon: Monitor,
       gradient: 'from-blue-500 to-purple-600',
       features: [
-        'Dynamic Website Development',
-        'Landing Page Design',
-        'Website Redesign Services',
-        'Responsive Website Design',
-        'Static Website Creation',
+        'Custom WordPress Themes',
+        'WooCommerce E-commerce',
+        'Plugin Development',
+        'SEO Optimization',
         'Website Maintenance',
-        'WordPress Web Development',
-        'E-commerce Web Development'
+        'Content Management',
+        'Security Hardening',
+        'Performance Optimization'
       ],
       subServices: [
-        'React Web Development',
-        'Angular Web Development', 
-        'Backend Web Development',
-        'Progressive Web Apps (PWA)'
+        'WooCommerce Development',
+        'WordPress Migration', 
+        'Custom Plugin Development',
+        'Theme Customization'
       ],
-      technologies: ['React', 'Angular', 'WordPress', 'Node.js'],
-      price: 'Contact for Quote',
-      timeline: '2-6 weeks'
+      technologies: ['WordPress', 'PHP', 'MySQL', 'WooCommerce'],
+      price: 'Starting ₹15,000',
+      timeline: '1-4 weeks'
+    },
+    {
+      id: 'coding-website',
+      title: 'Custom Coding Websites',
+      shortDesc: 'High-performance custom development',
+      description: 'Cutting-edge custom-coded websites built with modern technologies. Lightning-fast, highly secure, and uniquely tailored to your business needs.',
+      icon: Code,
+      gradient: 'from-indigo-500 to-blue-600',
+      features: [
+        'React/Next.js Development',
+        'Custom CMS Solutions',
+        'Progressive Web Apps',
+        'Advanced Integrations',
+        'Performance Optimization',
+        'Scalable Architecture',
+        'Modern UI/UX',
+        'API Development'
+      ],
+      subServices: [
+        'Single Page Applications',
+        'Headless CMS Integration', 
+        'E-commerce Platforms',
+        'Web Applications'
+      ],
+      technologies: ['React', 'Next.js', 'TypeScript', 'Node.js'],
+      price: 'Starting ₹35,000',
+      timeline: '4-12 weeks'
     },
     {
       id: 'digital-marketing',
@@ -173,62 +201,34 @@ const Services = () => {
       price: 'Starting ₹10,000/mo',
       timeline: 'Ongoing'
     },
-      {
-    id: 'video-marketing',
-    title: 'Video Marketing',
-    shortDesc: 'Engaging video content for impact',
-    description:
-      'Boost engagement and conversions with high-quality, storytelling-driven video content tailored to your audience and brand identity.',
-    icon: Video,
-    gradient: 'from-red-500 to-pink-600',
-    features: [
-      'Promotional Video Creation',
-      'YouTube Channel Management',
-      'Animated Explainer Videos',
-      'Corporate Videos',
-      'Product Demonstration Videos',
-      'Video Editing & Post-Production',
-      'Short-form Social Media Videos',
-      'Live Streaming Setup'
-    ],
-    subServices: [
-      'Drone Videography',
-      'Tutorial & Educational Videos',
-      'Event Coverage Videos',
-      'Storyboarding & Scriptwriting'
-    ],
-    technologies: ['Adobe Premiere Pro', 'After Effects', 'Final Cut Pro'],
-    price: 'Starting ₹8,000',
-    timeline: '1-3 weeks'
-  },
-  {
-    id: 'influencer-marketing',
-    title: 'Influencer Marketing',
-    shortDesc: 'Leverage influencer reach for brand growth',
-    description:
-      'Collaborate with trusted influencers to amplify your brand’s voice, reach niche audiences, and drive authentic engagement.',
-    icon: Users2, 
-    gradient: 'from-rose-500 to-orange-500',
-    features: [
-      'Influencer Discovery & Selection',
-      'Campaign Strategy & Planning',
-      'Content Collaboration',
-      'Performance Tracking & Analytics',
-      'Micro & Macro Influencer Campaigns',
-      'Platform-specific Campaign Execution',
-      'Influencer Relationship Management',
-      'Hashtag & Trend Strategy'
-    ],
-    subServices: [
-      'Instagram Influencer Marketing',
-      'YouTube Influencer Campaigns',
-      'TikTok Collaboration',
-      'Cross-platform Promotion'
-    ],
-    technologies: ['Hootsuite', 'BuzzSumo', 'Upfluence', 'Sprout Social'],
-    price: 'Starting ₹15,000/campaign',
-    timeline: '2-4 weeks'
-  }
+    {
+      id: 'social-media-marketing',
+      title: 'Social Media Marketing',
+      shortDesc: 'Grow your brand, community, and reach',
+      description:
+        'We plan, design, and execute social content that grows your presence, promotes your products, and builds an engaged audience across Instagram, Facebook, LinkedIn, and YouTube.',
+      icon: Users,
+      gradient: 'from-fuchsia-500 to-cyan-600',
+      features: [
+        'Content calendar & posting strategy',
+        'High‑quality creative design & copy',
+        'Reels/shorts, carousels, stories',
+        'Community management & engagement',
+        'Hashtag research & trend riding',
+        'Giveaways & collab campaigns',
+        'Performance dashboards & insights',
+        'UGC integration & creator collabs'
+      ],
+      subServices: [
+        'Instagram growth & reels engine',
+        'LinkedIn content & authority building',
+        'YouTube shorts + content repurposing',
+        'Cross‑platform publishing automation'
+      ],
+      technologies: ['Meta Suite', 'Canva', 'Figma', 'Later', 'Buffer', 'CapCut'],
+      price: 'Starting ₹18,000/mo',
+      timeline: 'Ongoing'
+    }
   ];
 
   const processSteps = [
@@ -413,8 +413,19 @@ const Services = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-max">
+      <section className="section-padding relative overflow-hidden bg-gradient-to-br from-white via-primary-50/30 to-secondary-50/30">
+        <div className="absolute inset-0 pattern-grid opacity-10"></div>
+        <motion.div 
+          className="absolute top-10 left-10 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl"
+          animate={{ scale: [1, 1.3, 1], x: [0, 100, 0] }}
+          transition={{ duration: 20, repeat: Infinity }}
+        />
+        <motion.div 
+          className="absolute bottom-10 right-10 w-80 h-80 bg-secondary-500/20 rounded-full blur-3xl"
+          animate={{ scale: [1.3, 1, 1.3], x: [0, -100, 0] }}
+          transition={{ duration: 25, repeat: Infinity }}
+        />
+        <div className="container-max relative z-10">
           <motion.div 
             className="text-center mb-20"
             initial={{ opacity: 0, y: 30 }}
@@ -502,10 +513,12 @@ const Services = () => {
                         <Link 
                           to={(() => {
                             const pathMap = {
-                              'web-design': '/services/web-design',
+                              'wordpress-website': '/services/web-design/wordpress',
+                              'coding-website': '/services/web-design/coding',
                               'digital-marketing': '/services/digital-marketing',
                               'seo': '/services/seo',
                               'ads': '/services/paid-ads',
+                              'social-media-marketing': '/services/social-media-marketing',
                             };
                             return pathMap[service.id] || '/contact';
                           })()}

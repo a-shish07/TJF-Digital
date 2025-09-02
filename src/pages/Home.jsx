@@ -27,6 +27,7 @@ import {
   Lightbulb,
   Trophy,
   Phone,
+  MapPin,
 } from "lucide-react";
 
 const Home = () => {
@@ -36,24 +37,39 @@ const Home = () => {
 
   const services = [
     {
-      title: "Web Design & Development",
+      title: "WordPress Websites",
       description:
-        "Create extraordinary digital experiences with our cutting-edge web solutions. From dynamic websites to e-commerce platforms, we build digital masterpieces that perform.",
+        "Professional WordPress websites with stunning designs, easy content management, and powerful functionality. Perfect for all businesses",
       icon: Monitor,
       gradient: "from-blue-500 to-purple-600",
       features: [
-        "Dynamic Website Development",
-        "Landing Page Design",
-        "E-commerce Development",
-        "Progressive Web Apps",
+        "Custom WordPress Themes",
+        "WooCommerce E-commerce",
+        "Plugin Development",
+        "SEO Optimization",
       ],
-      stats: "500+ Websites Built",
-      price: "Starting ₹25,000",
+      stats: "300+ WordPress Sites",
+      price: "Starting ₹15,000",
+    },
+    {
+      title: "Custom Coding Websites",
+      description:
+        "Cutting-edge custom-coded websites built with modern technologies. Lightning-fast, highly secure, and uniquely tailored to your business needs.",
+      icon: Code,
+      gradient: "from-indigo-500 to-blue-600",
+      features: [
+        "React/Next.js Development",
+        "Custom CMS Solutions",
+        "Progressive Web Apps",
+        "Advanced Integrations",
+      ],
+      stats: "200+ Custom Builds",
+      price: "Starting ₹35,000",
     },
     {
       title: "Digital Marketing",
       description:
-        "Transform your brand into a digital powerhouse with our comprehensive marketing strategies that deliver exceptional ROI and sustainable growth to your product .",
+        "Transform your brand into a digital powerhouse with our comprehensive marketing strategies that deliver exceptional ROI and sustainable growth.",
       icon: Megaphone,
       gradient: "from-pink-500 to-rose-600",
       features: [
@@ -66,9 +82,9 @@ const Home = () => {
       price: "Starting ₹15,000/mo",
     },
     {
-      title: "SEO Optimization",
+      title: "SEO Services",
       description:
-        "Dominate search rankings and drive qualified organic traffic with our advanced SEO strategies that establish your brand as an industry authority and secure long-term growth.",
+        "Dominate search rankings and drive qualified organic traffic with our advanced SEO strategies for long-term growth.",
       icon: Search,
       gradient: "from-green-500 to-teal-600",
       features: [
@@ -77,69 +93,54 @@ const Home = () => {
         "Technical SEO",
         "Local SEO",
       ],
-      stats: "Top 3 Rankings Guaranteed",
+      stats: "Top 3 Rankings Goal",
       price: "Starting ₹12,000/mo",
     },
     {
-      title: "Graphics Design",
+      title: "GMB (Google My Business)",
       description:
-        "Create a powerful brand identity that resonates with your audience and stands out in the marketplace with our award-winning design expertise.",
-      icon: Palette,
-      gradient: "from-orange-500 to-yellow-600",
+        "Boost local visibility with optimized Google Business Profiles, reviews strategy, and Maps performance.",
+      icon: MapPin,
+      gradient: "from-cyan-500 to-blue-600",
       features: [
-        "Logo Design (2D & 3D)",
-        "Brochure Design",
-        "Banner Design",
-        "Brand Identity Systems",
+        "Profile Setup & Optimization",
+        "Reviews & Ratings Strategy",
+        "Local Posts & Updates",
+        "Calls & Directions Tracking",
       ],
-      stats: "1000+ Designs Created",
-      price: "Starting ₹5,000",
+      stats: "↑ Calls & Directions",
+      price: "Custom",
+    },
+    {
+      title: "Social Media Marketing",
+      description:
+        "Grow your brand with strategic content, community engagement, and performance-driven social campaigns.",
+      icon: Users,
+      gradient: "from-fuchsia-500 to-cyan-600",
+      features: [
+        "Content Calendar & Posting",
+        "Reels/Shorts & Carousels",
+        "Community Management",
+        "Performance Insights",
+      ],
+      stats: "Audience Growth",
+      price: "Starting ₹18,000/mo",
     },
     {
       title: "Paid Advertisement",
       description:
-        "Maximize your advertising ROI with our data-driven approach to paid campaigns across all major platforms, delivering qualified leads and measurable growth.",
+        "Maximize ROI with high-performance ad campaigns across Google, Meta, LinkedIn and more.",
       icon: Target,
       gradient: "from-purple-500 to-indigo-600",
       features: [
         "Google Ads Management",
-        "Facebook Advertising",
+        "Facebook/Meta Advertising",
         "YouTube Advertising",
         "Campaign Optimization",
       ],
       stats: "500% ROAS Average",
       price: "Starting ₹10,000/mo",
-    },
-    {
-      title: "Video Marketing",
-      description:
-        "Maximize your advertising ROI with our data-driven approach to video campaigns across all major platforms, delivering qualified leads and measurable growth.",
-      icon: Target,
-      gradient: "from-purple-500 to-indigo-600",
-      features: [
-        "YouTube Ads Management",
-        "Video SEO",
-        "Social Media Video Ads",
-        "Campaign Optimization",
-      ],
-      stats: "500% ROAS Average",
-      price: "Starting ₹10,000/mo",
-    },
-    {
-      title: "Influencer Marketing",
-      description:
-        "Maximize your advertising ROI with our data-driven approach to influencer campaigns across all major platforms, delivering qualified leads and measurable growth.",
-      icon: Target,
-      gradient: "from-purple-500 to-indigo-600",
-      features: [
-        "Influencer Outreach",
-        "Campaign Management",
-        "Performance Analytics",
-        "Brand Partnerships",
-      ],
-      stats: "500% ROAS Average",
-      price: "Starting ₹10,000/mo",
-    },
+    }
   ];
 
   const stats = [
@@ -670,8 +671,8 @@ const Home = () => {
                       whileHover={{ x: 5 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <Link
-                        to="/services"
+                      <button
+                        onClick={() => navigate("/services")}
                         className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold "
                       >
                         <span>Learn More</span>
@@ -679,7 +680,7 @@ const Home = () => {
                           size={16}
                           className="ml-1 transition-transform duration-300 group-hover:translate-x-1"
                         />
-                      </Link>
+                      </button>
                     </motion.div>
 
                     {/* Hover Effect */}

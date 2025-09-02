@@ -1,9 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import SeoHead from '../../components/SeoHead';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import { Target, LineChart, BadgeDollarSign, CheckCircle, Rocket, Sparkles, Star } from 'lucide-react';
+import ServicePage from '../../components/services/ServicePage';
+import { Target, LineChart, Sparkles } from 'lucide-react';
 
 const PaidAds = () => {
   const features = [
@@ -24,83 +23,103 @@ const PaidAds = () => {
         description="ROAS-focused paid advertising across Google, Meta, and LinkedIn with rigorous testing and attribution."
         keywords={["paid ads", "ppc", "google ads", "meta ads", "linkedin ads", "roas"]}
       />
-      <motion.section className="relative min-h-[70vh] bg-mesh-gradient flex items-center justify-center">
-        <div className="absolute inset-0 pattern-grid opacity-20" />
-        <motion.div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl" animate={{ scale: [1,1.2,1], x: [0, 60, 0] }} transition={{ duration: 18, repeat: Infinity }} />
-        <motion.div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary-500/20 rounded-full blur-3xl" animate={{ scale: [1.2,1,1.2], x: [0,-60,0] }} transition={{ duration: 22, repeat: Infinity }} />
 
-        <div className="container-max text-center relative z-10">
-          <div className="mb-4 flex justify-center">
-            <Breadcrumbs items={[{ label: 'Home', to: '/' }, { label: 'Services', to: '/services' }, { label: 'Paid Ads', to: '/services/paid-ads' }]} />
-          </div>
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-sm font-semibold text-gray-800 border border-white/30 shadow-lg mb-6">
-              <Sparkles className="mr-2 h-5 w-5 text-primary-600" />
-              Paid Advertisement
-            </span>
-            <h1 className="text-5xl md:text-6xl font-bold font-serif text-gray-900 mb-6">
-              Performance <span className="text-primary-700">Paid Ads</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-              Launch and scale profitable campaigns across Google, Meta, and LinkedIn with precision.
-            </p>
-          </motion.div>
-        </div>
-      </motion.section>
-
-      <section className="section-padding bg-white">
-        <div className="container-max grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <div className="flex items-center space-x-4 mb-6">
-              <div className="p-4 rounded-2xl bg-gradient-to-r from-purple-500 to-indigo-600 shadow-lg">
-                <Target className="h-8 w-8 text-white" />
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold font-serif text-gray-900">Scale What Works</h2>
-                <p className="text-gray-600">Creative, targeting, and bids—continuously optimized.</p>
-              </div>
-            </div>
-            <ul className="space-y-4">
-              {features.map((f, i) => (
-                <li key={i} className="flex items-center space-x-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700 font-medium">{f}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 flex flex-wrap gap-3">
-              {platforms.map((t) => (
-                <span key={t} className="px-3 py-1 bg-white border border-gray-200 rounded-full text-sm font-medium text-gray-600">
-                  {t}
-                </span>
-              ))}
-            </div>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link to="/contact" className="btn-primary">
-                <span>Request Ad Strategy</span>
-                <BadgeDollarSign size={18} className="ml-2" />
-              </Link>
-              <Link to="/services" className="btn-ghost">Explore All Services</Link>
-            </div>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-            <div className="relative p-8 rounded-3xl bg-gradient-to-br from-purple-500 to-indigo-600 shadow-2xl overflow-hidden text-white text-center">
-              <div className="absolute inset-0 pattern-dots opacity-20" />
-              <motion.div className="absolute -top-10 -right-10 w-32 h-32 bg-white/20 rounded-full blur-xl" animate={{ scale: [1, 1.2, 1], rotate: [0, 360] }} transition={{ duration: 10, repeat: Infinity }} />
-              <div className="relative z-10 space-y-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl mb-4">
-                  <LineChart className="h-10 w-10" />
-                </div>
-                <h3 className="text-2xl font-bold">ROAS-Driven Execution</h3>
-                <p className="text-white/90">Iterative testing framework to find winners and scale profitably.</p>
-                <div className="flex justify-center space-x-2 text-yellow-300">
-                  {[1,2,3,4,5].map((s) => <Star key={s} size={18} className="fill-current" />)}
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <ServicePage
+        hero={{
+          title: 'Performance',
+          highlight: 'Paid Ads',
+          subtitle: 'Profitable acquisition across Google, Meta, LinkedIn.',
+          meshColors: ['from-violet-300/25', 'to-indigo-300/25'],
+          accentFrom: 'from-violet-600',
+          accentTo: 'to-indigo-600',
+          variant: 'google-ads',
+        }}
+        primary={{
+          icon: <Target className="h-8 w-8 text-white" />,
+          title: 'Scale What Works',
+          kicker: 'Creative • Targeting • Bids',
+          features: [
+            'Full-funnel PPC framework',
+            'Tracking & attribution hygiene',
+            'Systematic creative testing',
+          ],
+          chips: undefined,
+          variant: 'steps',
+          cta: { label: 'Contact Us', to: '/contact' },
+          ctaSecondary: { label: 'Explore All Services', to: '/services' },
+        }}
+        panel={{
+          gradient: 'bg-gradient-to-br from-violet-600 to-indigo-600',
+          icon: <LineChart className="h-10 w-10" />,
+          title: 'ROAS-Driven Execution',
+          subtitle: 'Test. Learn. Scale on profitable signals.',
+          stars: 5,
+        }}
+        ribbon={{ items: [
+          { label: 'Avg. CAC Reduction', value: '↓ 18–40%' },
+          { label: 'Speed to First Wins', value: '14–21 days' },
+          { label: 'Creative Iterations', value: '10–20/mo' },
+          { label: 'Attribution Hygiene', value: 'Server‑side' },
+        ]}}
+        logos={{ items: platforms }}
+        showcase={{
+          title: 'Testing Ladders',
+          items: [
+            { title: 'Hooks & Angles', note: 'Systematic creative iteration' },
+            { title: 'Audience Sculpting', note: 'Signals, exclusions, LTV' },
+            { title: 'Budget Pacing', note: 'Guardrails to protect ROAS' },
+            { title: 'Landing Alignment', note: 'Speed + message match' },
+            { title: 'Attribution', note: 'CAPI, offline imports' },
+            { title: 'Scale Mechanics', note: 'Winners, not noise' },
+          ],
+        }}
+        process={{
+          steps: [
+            { step: '01', title: 'Audit & Data', desc: 'Accounts, tracking, ICP' },
+            { step: '02', title: 'Plan', desc: 'Offers, structure, budgets' },
+            { step: '03', title: 'Launch', desc: 'Signals, creatives, QA' },
+            { step: '04', title: 'Optimize', desc: 'Kill losers, scale winners' },
+            { step: '05', title: 'Report', desc: 'Insights & next tests' },
+          ],
+        }}
+        pricing={{
+          title: 'Management Plans',
+          tiers: [
+            { name: 'Starter', price: '₹20,000/mo', features: ['Single platform', 'Weekly insights', 'Tracking setup'], cta: { label: 'Get Started', to: '/contact' } },
+            { name: 'Growth', price: '₹35,000/mo', features: ['2 platforms', 'Creative iteration', 'CAPI/Offline imports'], cta: { label: 'Scale Now', to: '/contact' } },
+            { name: 'Pro', price: 'Custom', features: ['3–4 platforms', 'Experiment roadmap', 'BI & guardrails'], cta: { label: 'Talk to Us', to: '/contact' } },
+          ],
+        }}
+        outcomes={{
+          cards: [
+            { kpi: '↓ CAC 28% in 60 days', note: 'Meta + landing page CRO' },
+            { kpi: '↑ ROAS 2.7x', note: 'Google Search + PMax structure' },
+            { kpi: '↑ Qualified Leads 54%', note: 'Lead scoring + exclusions' },
+          ],
+        }}
+        testimonials={{
+          title: 'Performance Wins',
+          items: [
+            { quote: 'ROAS turned positive by month two with clear guardrails.', author: 'Kriti G.', role: 'D2C' },
+            { quote: 'Finally, clean tracking—made decisions easy.', author: 'Saurabh V.', role: 'Services' },
+            { quote: 'We scaled spend 3x without efficiency drop.', author: 'Neha P.', role: 'Lead‑gen' },
+          ],
+        }}
+        faqs={{
+          items: [
+            { q: 'Minimum ad spend?', a: 'We recommend spend based on industry benchmarks and CAC goals.' },
+            { q: 'Do you produce creatives?', a: 'Yes—or we provide frameworks and collaborate with your team.' },
+            { q: 'Attribution setup?', a: 'We implement end‑to‑end tracking including CAPI and offline imports.' },
+            { q: 'How fast can we scale?', a: 'We scale only on profitable signals with guardrails to protect ROAS.' },
+          ],
+        }}
+        cta={{
+          title: 'Ready to scale efficient acquisition?',
+          subtitle: 'Let’s align on your goals and build a paid engine that prints results—not just clicks.',
+          to: '/contact',
+          label: 'Contact Us',
+        }}
+      />
     </div>
   );
 };

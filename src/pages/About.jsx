@@ -124,6 +124,11 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
       expertise: 'Strategic Leadership & Innovation',
     },
     {
+      name: 'Ravi Ranjan Kumar',
+      role: 'Digital Marketing Executive',
+      expertise: 'Social Media Marketing and SEO Specialist',
+    },
+    {
       name: 'Amit Singh',
       role: 'Digital Marketing Executive',
       expertise: 'Website Developer & Google Ads Specialist',
@@ -139,11 +144,6 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
       expertise: 'Video Editor & E-Commerce Specialist',
     },
      {
-      name: 'Ravi Ranjan Kumar',
-      role: 'Digital Marketing Executive',
-      expertise: 'Video Editor & E-Commerce Specialist',
-    },
-     {
       name: 'Gautam Kumar',
       role: 'Graphic Designer',
       expertise: 'Visual Design & Branding',
@@ -152,6 +152,11 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
       name: 'Ehtesham Ali',
       role: 'Graphic Designer',
       expertise: 'Visual Design & Branding',
+    },
+    {
+      name: 'Ashish Dubey',
+      role: 'Web Developer',
+      expertise: 'Website Development',
     },
   ];
 
