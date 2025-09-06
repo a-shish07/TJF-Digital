@@ -34,7 +34,7 @@ const WordPressWebsite = () => {
           meshColors: ['from-blue-300/25', 'to-purple-300/25'],
           accentFrom: 'from-blue-600',
           accentTo: 'to-purple-600',
-          variant: 'coding',
+          variant: 'wordpress',
           splitReverse: false,
         }}
         primary={{

@@ -144,7 +144,7 @@ const Blog = () => {
         "Learn how to build robust e-commerce platforms that can handle high traffic and complex business logic.",
       category: "Web Development",
       image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=300&fit=crop",
+        "https://www.webpulseindia.com/uploaded-files/category/images/thumbs/eCommerce-Web-Designing676e96e463eb2.webp",
       tags: ["E-commerce", "React", "Node.js", "Scalability"],
       link: "https://medium.com/@rohanraman6/building-a-scalable-web-application-using-a-modern-tech-stack-6ea60e6c980c",
     },

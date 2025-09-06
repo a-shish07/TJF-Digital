@@ -29,7 +29,7 @@ const MetaAds = () => {
       <ServicePage
         hero={{
           title: 'Meta Ads',
-          highlight: 'Domination',
+          highlight: 'Facebook & Instagram',
           subtitle: 'Scale your business with the power of Facebook and Instagram advertising.',
           meshColors: ['from-blue-300/25', 'to-pink-300/25'],
           accentFrom: 'from-blue-600',
@@ -38,7 +38,12 @@ const MetaAds = () => {
           splitReverse: false,
         }}
         primary={{
-          icon: <Facebook className="h-8 w-8 text-white" />,
+          icon: (
+            <div className="flex items-center gap-2">
+              <Facebook className="h-8 w-8 text-white" />
+              <Instagram className="h-8 w-8 text-white" />
+            </div>
+          ),
           title: 'Reach Billions of Users',
           kicker: 'Creative excellence meets audience precision.',
           features: [
@@ -59,18 +64,22 @@ const MetaAds = () => {
           stars: 5,
           foot: (
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
-              <div className="flex items-center justify-center gap-2 text-base font-semibold">
-                <Instagram size={18} /> Video • Stories • Feed • Reels
+              <div className="flex items-center justify-center gap-3 text-base font-semibold">
+                <Facebook size={18} />
+                <Instagram size={18} />
+                Video • Stories • Feed • Reels
               </div>
             </div>
           ),
         }}
-        ribbon={{ items: [
-          { label: 'Average ROAS', value: '4.5x' },
-          { label: 'Creative Win Rate', value: '78%' },
-          { label: 'Cost Reduction', value: '40%' },
-          { label: 'Reach Potential', value: '3B+' },
-        ]}}
+        ribbon={{
+          items: [
+            { label: 'Average ROAS', value: '4.5x' },
+            { label: 'Creative Win Rate', value: '78%' },
+            { label: 'Cost Reduction', value: '40%' },
+            { label: 'Reach Potential', value: '3B+' },
+          ],
+        }}
         logos={{ items: tools }}
         showcase={{
           title: 'What Makes Our Meta Campaigns Different',
@@ -123,9 +132,24 @@ const MetaAds = () => {
         pricing={{
           title: 'Meta Ads Management Packages',
           tiers: [
-            { name: 'Growth Starter', price: '₹18,000–₹35,000/mo', features: ['Campaign setup & management', 'Basic creative testing', 'Monthly reporting', 'Ad spend up to ₹2L'], cta: { label: 'Start Growing', to: '/contact' } },
-            { name: 'Scale Master', price: '₹40,000–₹75,000/mo', features: ['Advanced audience strategies', 'Video creative production', 'Weekly optimization', 'Ad spend up to ₹5L'], cta: { label: 'Scale Faster', to: '/contact' } },
-            { name: 'Enterprise Growth', price: 'Custom', features: ['Full creative studio', 'Multi-brand management', 'Custom integrations', 'Unlimited ad spend'], cta: { label: 'Enterprise Solution', to: '/contact' } },
+            {
+              name: 'Growth Starter',
+              price: '₹18,000–₹35,000/mo',
+              features: ['Campaign setup & management', 'Basic creative testing', 'Monthly reporting', 'Ad spend up to ₹2L'],
+              cta: { label: 'Start Growing', to: '/contact' },
+            },
+            {
+              name: 'Scale Master',
+              price: '₹40,000–₹75,000/mo',
+              features: ['Advanced audience strategies', 'Video creative production', 'Weekly optimization', 'Ad spend up to ₹5L'],
+              cta: { label: 'Scale Faster', to: '/contact' },
+            },
+            {
+              name: 'Enterprise Growth',
+              price: 'Custom',
+              features: ['Full creative studio', 'Multi-brand management', 'Custom integrations', 'Unlimited ad spend'],
+              cta: { label: 'Enterprise Solution', to: '/contact' },
+            },
           ],
         }}
         outcomes={{
@@ -138,22 +162,46 @@ const MetaAds = () => {
         testimonials={{
           title: 'Meta Success Stories',
           items: [
-            { quote: 'Our D2C brand scaled from ₹5L to ₹50L monthly revenue with their Meta strategy. ROI is incredible!', author: 'Sneha Agarwal', role: 'Fashion Brand Founder' },
-            { quote: 'Creative testing approach doubled our conversion rates. Finally found what resonates with our audience.', author: 'Karan Mehta', role: 'E-commerce Director' },
-            { quote: 'Lead quality improved 3x while cost per lead dropped by 45%. Meta ads are now our primary channel.', author: 'Ritika Sharma', role: 'EdTech Marketing Head' },
+            {
+              quote: 'Our D2C brand scaled from ₹5L to ₹50L monthly revenue with their Meta strategy. ROI is incredible!',
+              author: 'Sneha Agarwal',
+              role: 'Fashion Brand Founder',
+            },
+            {
+              quote: 'Creative testing approach doubled our conversion rates. Finally found what resonates with our audience.',
+              author: 'Karan Mehta',
+              role: 'E-commerce Director',
+            },
+            {
+              quote: 'Lead quality improved 3x while cost per lead dropped by 45%. Meta ads are now our primary channel.',
+              author: 'Ritika Sharma',
+              role: 'EdTech Marketing Head',
+            },
           ],
         }}
         faqs={{
           items: [
-            { q: 'How do you ensure consistent creative performance?', a: 'We use systematic A/B testing frameworks, analyze winning patterns, and maintain a continuous pipeline of fresh creative concepts to prevent audience fatigue.' },
-            { q: 'Can you help with video content creation?', a: 'Yes! We provide end-to-end video production including Reels, Stories, feed videos, and UGC-style content optimized for Meta platforms.' },
-            { q: 'What makes Meta ads different from Google ads?', a: 'Meta excels at discovery and visual storytelling, reaching people who aren\'t actively searching. It\'s perfect for building brand awareness and impulse purchases.' },
-            { q: 'How do you track conversions accurately?', a: 'We implement both Facebook Pixel and Conversions API for accurate attribution, plus integrate with your analytics tools for comprehensive tracking.' },
+            {
+              q: 'How do you ensure consistent creative performance?',
+              a: 'We use systematic A/B testing frameworks, analyze winning patterns, and maintain a continuous pipeline of fresh creative concepts to prevent audience fatigue.',
+            },
+            {
+              q: 'Can you help with video content creation?',
+              a: 'Yes! We provide end-to-end video production including Reels, Stories, feed videos, and UGC-style content optimized for Meta platforms.',
+            },
+            {
+              q: 'What makes Meta ads different from Google ads?',
+              a: "Meta excels at discovery and visual storytelling, reaching people who aren't actively searching. It's perfect for building brand awareness and impulse purchases.",
+            },
+            {
+              q: 'How do you track conversions accurately?',
+              a: 'We implement both Facebook Pixel and Conversions API for accurate attribution, plus integrate with your analytics tools for comprehensive tracking.',
+            },
           ],
         }}
         cta={{
           title: 'Ready to dominate Facebook and Instagram?',
-          subtitle: 'Let\'s create Meta campaigns that turn social engagement into business growth.',
+          subtitle: "Let's create Meta campaigns that turn social engagement into business growth.",
           to: '/contact',
           label: 'Launch Meta Strategy',
         }}

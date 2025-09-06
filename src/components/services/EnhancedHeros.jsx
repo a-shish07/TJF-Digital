@@ -10,11 +10,18 @@ import {
   MapPin,
   Facebook,
   Linkedin,
+  Youtube,
   Chrome,
   BarChart3,
   Smartphone,
-  Monitor
+  Monitor,
+  YoutubeIcon,
+  Instagram,
+  InstagramIcon,
+  LucideYoutube,
+  Twitter
 } from 'lucide-react';
+
 
 const Container = ({ children, className = '' }) => (
   <div className={`container-max ${className}`}>{children}</div>
@@ -36,65 +43,93 @@ const Badge = ({ badge }) =>
 // Coding/Development Hero - Futuristic code matrix style
 export const CodingHero = ({ hero, badge }) => {
   const codeLines = [
-    'const website = () => {',
-    '  return <Amazing />',
-    '}',
-    'export default Success'
+     'const website = () => {',
+  '  return <Amazing />;',
+  'export default Success;',
+  'const greet = (TJF DIGITAL) => {',
+  // '  console.log(`Hello, ${Family}!`);',
   ];
 
-  return (
-    <section className="relative min-h-[80vh] bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 overflow-hidden">
-      {/* Animated Code Background */}
-      <div className="absolute inset-0">
-        {Array.from({ length: 50 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute text-xs font-mono text-green-400/20"
-            initial={{ 
-              x: Math.random() * 1200, 
-              y: Math.random() * 800,
-              opacity: 0 
-            }}
-            animate={{ 
-              y: [null, -100], 
-              opacity: [0, 1, 0] 
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              delay: Math.random() * 2
-            }}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`
-            }}
-          >
-            {Math.random() > 0.5 ? '1' : '0'}
-          </motion.div>
-        ))}
-      </div>
+  const floatingWords = [
+  'digital',
+  'react',
+  'coding',
+  'AI',
+  'frontend',
+  'UX',
+  'next.js',
+  'node',
+  'typescript',
+  'hacker',
+  'neural',
+  'backend',
+  'firewall',
+  'console.log()',
+  'cyber',
+  'blockchain',
+  'debug',
+  'exploit',
+  'malware',
+  'terminal'
+];
 
-      {/* Floating Code Blocks */}
-      <div className="absolute inset-0">
+  return (
+    <section className="relative min-h-[80vh] bg-black overflow-hidden text-white">
+      {/* Matrix-style floating binary and words */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+  {Array.from({ length: 80 }).map((_, i) => (
+    <motion.div
+      key={i}
+      className="absolute text-xs font-mono"
+      initial={{
+        x: Math.random() * 1200,
+        y: Math.random() * 800,
+        opacity: 0,
+      }}
+      animate={{
+        y: [Math.random() * 500, -100],
+        opacity: [0, 0.2, 0],
+      }}
+      transition={{
+        duration: Math.random() * 5 + 3,
+        repeat: Infinity,
+        delay: Math.random() * 2,
+        ease: 'linear',
+      }}
+      style={{
+        color: 'white',
+        opacity: 1,
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+      }}
+    >
+      {floatingWords[Math.floor(Math.random() * floatingWords.length)]}
+    </motion.div>
+  ))}
+</div>
+
+
+      {/* Floating Code Snippets */}
+      <div className="absolute inset-0 z-0">
         {codeLines.map((line, i) => (
           <motion.div
             key={i}
-            className="absolute bg-black/30 backdrop-blur-sm border border-green-400/30 rounded-lg p-3 text-green-400 font-mono text-sm"
+            className="absolute bg-black/40 backdrop-blur-sm border border-green-400/20 rounded-md px-4 py-2 text-green-300 font-mono text-sm shadow-lg"
             initial={{ opacity: 0, x: -100 }}
-            animate={{ 
-              opacity: [0.8, 1, 0.8], 
-              x: [null, Math.random() * 200 - 100],
-              y: [null, Math.random() * 50 - 25]
+            animate={{
+              opacity: [0.7, 1, 0.7],
+              x: [null, Math.random() * 100 - 100],
+              y: [null, Math.random() * 50 - 25],
             }}
             transition={{
               delay: i * 0.5,
               duration: 4,
               repeat: Infinity,
-              repeatType: 'reverse'
+              repeatType: 'reverse',
             }}
             style={{
-              top: `${20 + i * 15}%`,
-              left: `${10 + i * 20}%`
+              top: `${20 + i * 20}%`,
+              left: `${10 + i * 20}%`,
             }}
           >
             {line}
@@ -102,7 +137,8 @@ export const CodingHero = ({ hero, badge }) => {
         ))}
       </div>
 
-      <Container className="relative z-10 h-full flex items-center justify-center text-center text-white">
+      {/* Content */}
+      <Container className="relative z-10 h-full flex items-center justify-center text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -110,24 +146,24 @@ export const CodingHero = ({ hero, badge }) => {
         >
           <Badge badge={badge} />
           <div className="mt-8" />
-          
-          <motion.h1 
-            className="text-6xl md:text-8xl font-black mb-6 leading-tight"
+
+          <motion.h1
+            className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, type: 'spring', stiffness: 100, damping: 12 }}
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-blue-400 to-purple-400">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-300 via-teal-400 to-emerald-500 drop-shadow">
               {hero?.title}
             </span>
             <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-400">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-500">
               {hero?.highlight}
             </span>
           </motion.h1>
-          
-          <motion.p 
-            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+
+          <motion.p
+            className="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -135,7 +171,7 @@ export const CodingHero = ({ hero, badge }) => {
             {hero?.subtitle}
           </motion.p>
 
-          {/* Floating tech icons */}
+          {/* Floating Icons */}
           <div className="absolute inset-0 pointer-events-none">
             {[Code, Globe, Smartphone, Monitor].map((Icon, i) => (
               <motion.div
@@ -144,19 +180,19 @@ export const CodingHero = ({ hero, badge }) => {
                 animate={{
                   y: [0, -20, 0],
                   rotate: [0, 360],
-                  scale: [1, 1.1, 1]
+                  scale: [1, 1.1, 1],
                 }}
                 transition={{
                   duration: 4 + i,
                   repeat: Infinity,
-                  delay: i * 0.5
+                  delay: i * 0.5,
                 }}
                 style={{
                   top: `${20 + i * 20}%`,
-                  right: `${10 + i * 10}%`
+                  right: `${10 + i * 10}%`,
                 }}
               >
-                <Icon className="w-8 h-8 text-blue-400/30" />
+                <Icon className="w-8 h-8 text-green-400/20" />
               </motion.div>
             ))}
           </div>
@@ -165,6 +201,100 @@ export const CodingHero = ({ hero, badge }) => {
     </section>
   );
 };
+
+import {
+  Settings as Gear,
+  Cloud,
+  
+} from 'lucide-react';
+
+
+export const WordPressHero = ({ hero, badge }) => {
+  const backgroundIcons = [
+    { Icon: Smartphone, size: 48, color: '#3498db', label: 'Mobile' },
+    { Icon: Gear, size: 48, color: '#7f8c8d', label: 'Settings' },
+    { Icon: Cloud, size: 48, color: '#bdc3c7', label: 'Cloud' },
+    { Icon: Code, size: 48, color: '#2ecc71', label: 'Code' },
+  ];
+
+  return (
+    <section className="relative min-h-[80vh] bg-black text-white overflow-hidden">
+      {/* Background WordPress logo and tech icons */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+       
+        {/* Floating tech icons */}
+        {backgroundIcons.map(({ Icon, size, color, label }, i) => (
+          <motion.div
+            key={i}
+            className="absolute flex flex-col items-center select-none"
+            style={{
+              top: `${15 + i * 15}%`,
+              left: `${60 + (i % 2) * 15}%`,
+              color,
+              fontSize: size,
+              filter: 'drop-shadow(0 0 6px rgba(0,0,0,0.5))',
+              userSelect: 'none',
+            }}
+            animate={{
+              y: [0, 15, 0],
+              rotate: [0, 15, -15, 0],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 8 + i * 2,
+              repeat: Infinity,
+              delay: i * 1.5,
+              ease: 'easeInOut',
+            }}
+          >
+            <Icon size={size} />
+            <span className="mt-1 text-xs font-semibold text-white/70">{label}</span>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* Main content */}
+      <Container className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-3xl"
+        >
+          <Badge badge={badge} />
+          <div className="mt-8" />
+
+          <motion.h1
+            className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tight"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, type: 'spring', stiffness: 100, damping: 12 }}
+          >
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-300 via-teal-400 to-emerald-500 drop-shadow">
+              {hero?.title}
+            </span>
+            <br />
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-red-500">
+              {hero?.highlight || 'Custom themes, plugins & solutions'}
+            </span>
+          </motion.h1>
+
+          <motion.p
+            className="text-lg md:text-2xl text-gray-200 max-w-xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            {hero?.subtitle || 'Build your site with power and flexibility.'}
+          </motion.p>
+        </motion.div>
+      </Container>
+    </section>
+  );
+};
+
+
+
 
 // SEO Hero - Search results animation style
 export const SEOHero = ({ hero, badge }) => {
@@ -176,40 +306,24 @@ export const SEOHero = ({ hero, badge }) => {
 
   return (
     <section className="relative min-h-[80vh] bg-gradient-to-br from-emerald-50 via-white to-teal-50 overflow-hidden">
-      {/* Search Interface Mockup */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      {/* Search Interface Mockup - Hidden on mobile, shown on desktop */}
+      <div className="absolute inset-0 hidden lg:flex items-center justify-center">
         <motion.div
           className="w-full max-w-2xl mx-auto"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5 }}
         >
-          {/* Search Bar */}
-          <motion.div 
-            className="bg-white rounded-full shadow-2xl p-4 mb-8 border"
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          >
-            <div className="flex items-center">
-              <Search className="w-6 h-6 text-gray-400 ml-4" />
-              <motion.span 
-                className="text-gray-700 ml-4 text-lg"
-                transition={{ delay: 0, duration: 1 }}
-              >
-                "Best Service Near Me"
-              </motion.span>
-            </div>
-          </motion.div>
 
           {/* Search Results */}
-          <div className="space-y-4">
+          <div className="space-y-4 ml-60">
             {searchResults.map((result, i) => (
               <motion.div
                 key={i}
                 className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-emerald-200"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1 + i * 0.3 }}
+                transition={{ delay: 0.5 + i * 0.3 }}
                 whileHover={{ scale: 1.01, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
               >
                 <div className="flex items-start">
@@ -227,17 +341,18 @@ export const SEOHero = ({ hero, badge }) => {
         </motion.div>
       </div>
 
-      <Container className="relative z-10 h-full flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+      <Container className="relative z-10 h-full flex items-center py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
+            className="text-center lg:text-left"
           >
             <Badge badge={badge} />
             <div className="mt-8" />
             
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
               <span className="text-gray-900">{hero?.title}</span>
               <br />
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
@@ -245,13 +360,35 @@ export const SEOHero = ({ hero, badge }) => {
               </span>
             </h1>
             
-            <p className="text-xl text-gray-700 leading-relaxed max-w-2xl">
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8">
               {hero?.subtitle}
             </p>
 
+            {/* Mobile-friendly search results */}
+            <div className="block lg:hidden mb-8">
+              <div className="grid gap-3">
+                {searchResults.slice(0, 2).map((result, i) => (
+                  <motion.div
+                    key={i}
+                    className="bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg border border-emerald-200"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 + i * 0.2 }}
+                  >
+                    <div className="flex items-center">
+                      <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs px-2 py-1 rounded mr-2 font-bold">
+                        #{i + 1}
+                      </div>
+                      <div className="font-semibold text-emerald-700 text-sm">{result.split(' - ')[0]}</div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
             {/* Ranking Animation */}
             <motion.div 
-              className="mt-8 flex items-center space-x-4"
+              className="flex justify-center lg:justify-start"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 2 }}
@@ -264,7 +401,7 @@ export const SEOHero = ({ hero, badge }) => {
           </motion.div>
 
           <div className="relative">
-            {/* This space is used by the search interface */}
+            {/* This space is used by the search interface on desktop */}
           </div>
         </div>
       </Container>
@@ -277,13 +414,13 @@ export const DigitalMarketingHero = ({ hero, badge }) => {
   const posts = [
     { platform: 'facebook', likes: '2.4K', comments: '156' },
     { platform: 'instagram', likes: '3.2K', comments: '89' },
-    { platform: 'linkedin', likes: '890', comments: '34' }
+    { platform: 'Youtube', likes: '890', comments: '34' }
   ];
 
   return (
     <section className="relative min-h-[80vh] bg-gradient-to-br from-pink-100 via-white to-rose-100 overflow-hidden">
-      {/* Floating Social Cards */}
-      <div className="absolute inset-0">
+      {/* Floating Social Cards - Hidden on mobile, shown on desktop */}
+      <div className="absolute inset-0 hidden lg:block">
         {posts.map((post, i) => (
           <motion.div
             key={i}
@@ -308,8 +445,8 @@ export const DigitalMarketingHero = ({ hero, badge }) => {
           >
             <div className="flex items-center mb-4">
               {post.platform === 'facebook' && <Facebook className="w-6 h-6 text-blue-600" />}
-              {post.platform === 'instagram' && <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg" />}
-              {post.platform === 'linkedin' && <Linkedin className="w-6 h-6 text-blue-700" />}
+              {post.platform === 'instagram' && <InstagramIcon className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg" />}
+              {post.platform === 'Youtube' && <YoutubeIcon className="w-6 h-6 text-blue-700" />}
               <span className="ml-2 font-semibold capitalize">{post.platform}</span>
             </div>
             <div className="h-20 bg-gray-100 rounded-lg mb-4"></div>
@@ -321,9 +458,9 @@ export const DigitalMarketingHero = ({ hero, badge }) => {
         ))}
       </div>
 
-      <Container className="relative z-10 h-full flex items-center">
+      <Container className="relative z-10 h-full flex items-center py-16">
         <motion.div
-          className="max-w-3xl"
+          className="max-w-3xl mx-auto text-center lg:text-left lg:mx-0"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -331,7 +468,7 @@ export const DigitalMarketingHero = ({ hero, badge }) => {
           <Badge badge={badge} />
           <div className="mt-8" />
           
-          <h1 className="text-6xl md:text-8xl font-black mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-8xl font-black mb-6 leading-tight">
             <span className="text-gray-900">{hero?.title}</span>
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-rose-600">
@@ -339,16 +476,46 @@ export const DigitalMarketingHero = ({ hero, badge }) => {
             </span>
           </h1>
           
-          <p className="text-xl text-gray-700 leading-relaxed max-w-2xl mb-8">
+          <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8">
             {hero?.subtitle}
           </p>
 
+          {/* Mobile-friendly social platforms showcase */}
+          <div className="block lg:hidden mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {posts.map((post, i) => (
+                <motion.div
+                  key={i}
+                  className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border-2 shadow-lg"
+                  style={{
+                    borderColor: post.platform === 'facebook' ? '#1877F2' : 
+                                post.platform === 'instagram' ? '#E4405F' : '#0077B5'
+                  }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                >
+                  <div className="flex items-center justify-center mb-3">
+                    {post.platform === 'facebook' && <Facebook className="w-6 h-6 text-blue-600" />}
+                    {post.platform === 'instagram' && <InstagramIcon className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg" />}
+                    {post.platform === 'Youtube' && <YoutubeIcon className="w-6 h-6 text-blue-700" />}
+                    <span className="ml-2 font-semibold capitalize">{post.platform}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>❤️ {post.likes}</span>
+                    <span>💬 {post.comments}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
           {/* Metrics Animation */}
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start">
             {['Reach +300%', 'Engagement +150%', 'Conversions +200%'].map((metric, i) => (
               <motion.div
                 key={i}
-                className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-6 py-3 rounded-full font-semibold"
+                className="bg-gradient-to-r from-pink-500 to-rose-500 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold text-sm sm:text-base"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 1 + i * 0.2 }}
@@ -375,19 +542,45 @@ export const GMBHero = ({ hero, badge }) => {
   return (
     <section className="relative min-h-[80vh] bg-gradient-to-br from-emerald-100 via-white to-teal-100 overflow-hidden">
       {/* Map Background */}
-      <div className="absolute inset-0 opacity-10">
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          <defs>
-            <pattern id="map-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#10B981" strokeWidth="0.5"/>
-            </pattern>
-          </defs>
-          <rect width="100" height="100" fill="url(#map-grid)" />
-        </svg>
-      </div>
+     <div className="absolute inset-0 opacity-100">
+  <svg viewBox="0 0 100 100" className="w-full h-full">
+    <defs>
+      {/* Grid pattern */}
+      <pattern id="map-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#10B981" strokeWidth="0.5"/>
+      </pattern>
 
-      {/* Floating Business Cards */}
-      <div className="absolute inset-0">
+      {/* Arrowhead definition */}
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#10B981" />
+      </marker>
+    </defs>
+
+    {/* Grid background */}
+    <rect width="100" height="100" fill="url(#map-grid)" />
+
+    {/* Growth line */}
+    <polyline 
+      points="10,90 30,70 50,75 80,30" 
+      fill="none" 
+      stroke="#10B981" 
+      strokeWidth=".5"
+      markerEnd="url(#arrowhead)"
+    >
+      <animate 
+        attributeName="stroke-dasharray"
+        from="0, 200"
+        to="200, 0"
+        dur="2s"
+        fill="freeze"
+      />
+    </polyline>
+  </svg>
+</div>
+
+
+      {/* Floating Business Cards - Hidden on mobile, shown on desktop */}
+      <div className="absolute inset-0 hidden lg:block">
         {businesses.map((business, i) => (
           <motion.div
             key={i}
@@ -427,9 +620,9 @@ export const GMBHero = ({ hero, badge }) => {
         ))}
       </div>
 
-      <Container className="relative z-10 h-full flex items-center">
+      <Container className="relative z-10 h-full flex items-center py-16">
         <motion.div
-          className="max-w-3xl"
+          className="max-w-3xl mx-auto text-center lg:text-left lg:mx-0"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -437,7 +630,7 @@ export const GMBHero = ({ hero, badge }) => {
           <Badge badge={badge} />
           <div className="mt-8" />
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
             <span className="text-gray-900">{hero?.title}</span>
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-teal-600">
@@ -445,9 +638,35 @@ export const GMBHero = ({ hero, badge }) => {
             </span>
           </h1>
           
-          <p className="text-xl text-gray-700 leading-relaxed max-w-2xl mb-8">
+          <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8">
             {hero?.subtitle}
           </p>
+
+          {/* Mobile-friendly business comparison */}
+          <div className="block lg:hidden mb-8">
+            <div className="space-y-3">
+              {businesses.slice(0, 1).map((business, i) => (
+                <motion.div
+                  key={i}
+                  className="bg-white/90 backdrop-blur-sm rounded-xl p-4 border-l-4 border-emerald-500 shadow-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <MapPin className="w-5 h-5 text-emerald-600 mr-2" />
+                      <span className="font-semibold text-emerald-700">{business.name}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <span className="text-yellow-500 text-lg">{'★'.repeat(Math.floor(business.rating))}</span>
+                      <span className="ml-2 font-medium">{business.rating}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
 
           {/* Local Stats */}
           <motion.div 
@@ -495,101 +714,104 @@ export const AdsHero = ({ hero, badge, adType = 'Google' }) => {
 
   return (
     <section className="relative min-h-[80vh] bg-gradient-to-br from-blue-50 via-white to-indigo-50 overflow-hidden">
-      {/* Dashboard Background */}
-      <div className="absolute inset-0 flex items-center justify-end mr-16">
-        <motion.div
-          className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border border-gray-200 max-w-2xl w-full"
-          initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
-          animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          {/* Dashboard Header */}
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center">
-              <platform.icon className="w-8 h-8 text-blue-600 mr-3" />
-              <span className="text-xl font-bold text-gray-900">{adType} Ads Dashboard</span>
+      <Container className="relative z-10 h-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[80vh] py-16">
+          {/* Headlines/Content Column - Now First */}
+          <motion.div
+            className="order-1 lg:order-1"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Badge badge={badge} />
+            <div className="mt-8" />
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+              <span className="text-gray-900">{hero?.title}</span>
+              <br />
+              <span className={`bg-clip-text text-transparent bg-gradient-to-r ${platform.color}`}>
+                {hero?.highlight}
+              </span>
+            </h1>
+            
+            <p className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-2xl mb-8">
+              {hero?.subtitle}
+            </p>
+
+            {/* Performance Indicators */}
+            <div className="flex flex-wrap gap-4">
+              {['ROI 450%', 'CPC -30%', 'CTR +25%'].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  className={`bg-gradient-to-r ${platform.color} text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold shadow-lg text-sm md:text-base`}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 1 + i * 0.2 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  {stat}
+                </motion.div>
+              ))}
             </div>
-            <motion.div
-              className="w-3 h-3 bg-green-500 rounded-full"
-              animate={{ opacity: [1, 0.5, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </div>
+          </motion.div>
 
-          {/* Metrics */}
-          <div className="grid grid-cols-3 gap-4 mb-6">
-            {metrics.map((metric, i) => (
-              <motion.div
-                key={i}
-                className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-4 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 + i * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${platform.color}`}>
-                  {metric.value}
+          {/* Dashboard Column - Now Second */}
+          <motion.div
+            className="order-2 lg:order-2"
+            initial={{ opacity: 0, scale: 0.8, rotateY: 15 }}
+            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-4 md:p-6 lg:p-8 border border-gray-200 mx-auto max-w-md lg:max-w-none">
+              {/* Dashboard Header */}
+              <div className="flex items-center justify-between mb-4 md:mb-6">
+                <div className="flex items-center">
+                  <platform.icon className="w-6 h-6 md:w-8 md:h-8 text-blue-600 mr-2 md:mr-3" />
+                  <span className="text-lg md:text-xl font-bold text-gray-900">{adType} Ads Dashboard</span>
                 </div>
-                <div className="text-sm text-gray-600 mb-1">{metric.label}</div>
-                <div className="text-xs text-green-600 font-semibold">{metric.change}</div>
-              </motion.div>
-            ))}
-          </div>
+                <motion.div
+                  className="w-3 h-3 bg-green-500 rounded-full"
+                  animate={{ opacity: [1, 0.5, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                />
+              </div>
 
-          {/* Chart Area */}
-          <div className="h-24 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-xl flex items-end justify-around p-4">
-            {Array.from({ length: 7 }).map((_, i) => (
-              <motion.div
-                key={i}
-                className={`bg-gradient-to-t ${platform.color} rounded-t`}
-                style={{ width: '8px' }}
-                initial={{ height: 0 }}
-                animate={{ height: `${20 + Math.random() * 60}px` }}
-                transition={{ delay: 1.5 + i * 0.1, duration: 0.5 }}
-              />
-            ))}
-          </div>
-        </motion.div>
-      </div>
+              {/* Metrics */}
+              <div className="grid grid-cols-3 gap-2 md:gap-4 mb-4 md:mb-6">
+                {metrics.map((metric, i) => (
+                  <motion.div
+                    key={i}
+                    className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-2 md:p-4 text-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1 + i * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <div className={`text-lg md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${platform.color}`}>
+                      {metric.value}
+                    </div>
+                    <div className="text-xs md:text-sm text-gray-600 mb-1">{metric.label}</div>
+                    <div className="text-xs text-green-600 font-semibold">{metric.change}</div>
+                  </motion.div>
+                ))}
+              </div>
 
-      <Container className="relative z-10 h-full flex items-center">
-        <motion.div
-          className="max-w-3xl"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <Badge badge={badge} />
-          <div className="mt-8" />
-          
-          <h1 className="text-6xl md:text-8xl font-black mb-6 leading-tight">
-            <span className="text-gray-900">{hero?.title}</span>
-            <br />
-            <span className={`bg-clip-text text-transparent bg-gradient-to-r ${platform.color}`}>
-              {hero?.highlight}
-            </span>
-          </h1>
-          
-          <p className="text-xl text-gray-700 leading-relaxed max-w-2xl mb-8">
-            {hero?.subtitle}
-          </p>
-
-          {/* Performance Indicators */}
-          <div className="flex flex-wrap gap-4">
-            {['ROI 450%', 'CPC -30%', 'CTR +25%'].map((stat, i) => (
-              <motion.div
-                key={i}
-                className={`bg-gradient-to-r ${platform.color} text-white px-6 py-3 rounded-full font-semibold shadow-lg`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1 + i * 0.2 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                {stat}
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+              {/* Chart Area */}
+              <div className="h-16 md:h-24 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-xl flex items-end justify-around p-2 md:p-4">
+                {Array.from({ length: 7 }).map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className={`bg-gradient-to-t ${platform.color} rounded-t`}
+                    style={{ width: '6px', maxWidth: '8px' }}
+                    initial={{ height: 0 }}
+                    animate={{ height: `${20 + Math.random() * 40}px` }}
+                    transition={{ delay: 1.5 + i * 0.1, duration: 0.5 }}
+                  />
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </Container>
     </section>
   );
@@ -598,9 +820,11 @@ export const AdsHero = ({ hero, badge, adType = 'Google' }) => {
 // Social Media Hero - Social feed animation
 export const SocialMediaHero = ({ hero, badge }) => {
   const socialPosts = [
-    { type: 'image', engagement: '2.1K', platform: 'Instagram' },
-    { type: 'video', engagement: '5.4K', platform: 'Facebook' },
-    { type: 'story', engagement: '1.8K', platform: 'LinkedIn' }
+    { type: 'image', engagement: '2.1K', platform: 'Instagram',icon: <InstagramIcon className="w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg" /> },
+    { type: 'video', engagement: '5.4K', platform: 'Facebook',icon: <Facebook className="w-6 h-6 text-blue-600" /> },
+    { type: 'story', engagement: '1.8K', platform: 'Youtube',icon: <LucideYoutube className="w-6 h-6 text-blue-700" /> },
+    { type: 'post', engagement: '3.3K', platform: 'LinkedIn',icon: <Linkedin className="w-6 h-6 text-blue-800" /> },
+    { type: 'poll', engagement: '1.2K', platform: 'Twitter',icon: <Twitter className="w-6 h-6 text-sky-600" /> },
   ];
 
   return (
@@ -625,15 +849,15 @@ export const SocialMediaHero = ({ hero, badge }) => {
         ))}
       </div>
 
-      {/* Floating Social Cards */}
-      <div className="absolute inset-0">
+      {/* Floating Social Cards - Hidden on mobile, shown on desktop */}
+      <div className="absolute inset-0 hidden lg:block">
         {socialPosts.map((post, i) => (
           <motion.div
             key={i}
             className="absolute bg-white rounded-2xl shadow-xl p-4 border-2 border-pink-200"
             style={{
-              top: `${25 + i * 20}%`,
-              right: `${5 + i * 15}%`,
+              top: `${10 + i * 15}%`,
+              right: `${5 + i * 7}%`,
               width: '200px'
             }}
             animate={{
@@ -648,8 +872,9 @@ export const SocialMediaHero = ({ hero, badge }) => {
             }}
             whileHover={{ scale: 1.1, rotate: 8 }}
           >
-            <div className="h-24 bg-gradient-to-br from-pink-200 to-purple-200 rounded-lg mb-3"></div>
+            {/* <div className="h-24 bg-gradient-to-br from-pink-200 to-purple-200 rounded-lg mb-3"></div> */}
             <div className="flex items-center justify-between">
+              <span className="text-base font-semibold text-gray-900">{post.icon}</span>
               <span className="text-sm font-semibold text-gray-700">{post.platform}</span>
               <div className="flex items-center text-sm text-gray-600">
                 <span className="mr-2">❤️</span>
@@ -660,9 +885,9 @@ export const SocialMediaHero = ({ hero, badge }) => {
         ))}
       </div>
 
-      <Container className="relative z-10 h-full flex items-center">
+      <Container className="relative z-10 h-full flex items-center py-16">
         <motion.div
-          className="max-w-3xl"
+          className="max-w-3xl mx-auto text-center lg:text-left lg:mx-0"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
@@ -670,7 +895,7 @@ export const SocialMediaHero = ({ hero, badge }) => {
           <Badge badge={badge} />
           <div className="mt-8" />
           
-          <h1 className="text-6xl md:text-8xl font-black mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-8xl font-black mb-6 leading-tight">
             <span className="text-gray-900">{hero?.title}</span>
             <br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600">
@@ -678,9 +903,33 @@ export const SocialMediaHero = ({ hero, badge }) => {
             </span>
           </h1>
           
-          <p className="text-xl text-gray-700 leading-relaxed max-w-2xl mb-8">
+          <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8">
             {hero?.subtitle}
           </p>
+
+          {/* Mobile-friendly social platforms showcase */}
+          <div className="block lg:hidden mb-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {socialPosts.slice(0, 6).map((post, i) => (
+                <motion.div
+                  key={i}
+                  className="bg-white/90 backdrop-blur-sm rounded-xl p-3 border border-pink-200 shadow-lg"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.2 + i * 0.1 }}
+                >
+                  <div className="flex flex-col items-center text-center">
+                    <span className="text-lg mb-1">{post.icon}</span>
+                    <span className="text-xs font-semibold text-gray-700">{post.platform}</span>
+                    <div className="flex items-center text-xs text-gray-600 mt-1">
+                      <span className="mr-1">❤️</span>
+                      <span>{post.engagement}</span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
 
           {/* Social Metrics */}
           <motion.div 
@@ -712,6 +961,7 @@ export const SocialMediaHero = ({ hero, badge }) => {
 
 export default {
   CodingHero,
+  WordPressHero,
   SEOHero,
   DigitalMarketingHero,
   GMBHero,

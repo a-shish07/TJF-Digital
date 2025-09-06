@@ -1,5 +1,5 @@
 import React from 'react';
-import logoImg from '../assets/logo.jpg';
+import logoImg from '../assets/LOGO.png';
 
 /**
  * Reusable brand logo component
@@ -31,7 +31,7 @@ const Logo = ({ size = 'md', theme = 'dark', showText = true, className = '' }) 
       <img
         src={logoImg}
         alt="TJF Digital logo"
-        className={`${imageSize} rounded-lg shadow-md object-cover`}
+        className={`${imageSize} rounded-lg  object-cover`}
         loading="lazy"
       />
       {showText && (
@@ -40,7 +40,10 @@ const Logo = ({ size = 'md', theme = 'dark', showText = true, className = '' }) 
           <span className={`${digitalGradient}`}>Digital</span>
         </div>
       )}
+      
     </div>
+    
+
   );
 };
 

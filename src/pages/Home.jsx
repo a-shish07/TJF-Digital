@@ -29,6 +29,7 @@ import {
   Phone,
   MapPin,
 } from "lucide-react";
+import CircleCarousel from "../components/CarouselClient";
 
 const Home = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -140,7 +141,7 @@ const Home = () => {
       ],
       stats: "500% ROAS Average",
       price: "Starting ₹10,000/mo",
-    }
+    },
   ];
 
   const stats = [
@@ -285,53 +286,28 @@ const Home = () => {
       name: "React",
       logo: new URL("../assets/photo9.jpg", import.meta.url).href,
     },
+    // {
+    //   name: "Aadil",
+    //   logo: new URL("../assets/agancia.jpg", import.meta.url).href,
+    // },
+    // {
+    //   name: "Abdul",
+    //   logo: new URL("../assets/foodie.jpg", import.meta.url).href,
+    // },
+    // {
+    //   name: "React",
+    //   logo: new URL("../assets/gulmohar.jpg", import.meta.url).href,
+    // },
+    // {
+    //   name: "Aadil",
+    //   logo: new URL("../assets/keptown.jpg", import.meta.url).href,
+    // },
+    // {
+    //   name: "Abdul",
+    //   logo: new URL("../assets/maa janki.jpg", import.meta.url).href,
+    // },
   ];
 
-  // Reusable marquee row for smooth, infinite scrolling logos (enhanced large cards)
-  const MarqueeRow = ({ items, direction = "left", speed = 40 }) => {
-    const isLeft = direction === "left";
-
-    return (
-      <div className="relative overflow-hidden w-full">
-        {/* Edge fades for premium look */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10" />
-
-        <motion.div
-          className="flex items-center gap-10 md:gap-12 min-w-max"
-          animate={{ x: isLeft ? ["0%", "-50%"] : ["-50%", "0%"] }}
-          transition={{
-            duration: speed,
-            ease: "linear",
-            repeat: Infinity,
-          }}
-        >
-          {/* Duplicate the items twice to make infinite loop seamless */}
-          {[...items, ...items].map((item, i) => (
-            <div
-              key={i}
-              className="relative group flex items-center gap-5 md:gap-6 px-8 md:px-10 py-5 md:py-6 rounded-3xl shadow-lg bg-white/90 backdrop-blur-xl border border-white/60"
-              style={{
-                background:
-                  "linear-gradient(white, white) padding-box, linear-gradient(135deg, rgba(99,102,241,.6), rgba(236,72,153,.6)) border-box",
-                border: "6px solid transparent",
-              }}
-            >
-              {/* Logo only */}
-              <div className="relative">
-                <img
-                  src={item.logo}
-                  alt="Client logo"
-                  className="relative h-24 w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 object-contain rounded-2xl ring-2 ring-white/80 shadow-xl group-hover:shadow-2xl transition-all duration-500"
-                  loading="lazy"
-                />
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-    );
-  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -448,65 +424,66 @@ const Home = () => {
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4  gap-8 m-4 sm:m-0 lg:m-4">
-  {stats.map((stat, index) => {
-    const Icon = stat.icon;
-    return (
-      <motion.div
-        key={index}
-        className="text-center group relative"
-        initial={{ opacity: 0, scale: 0.5, y: 50 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-        transition={{ delay: index * 0.15, duration: 0.8 }}
-        viewport={{ once: true }}
-        whileHover={{ scale: 1.05, y: -5 }}
-      >
-        {/* Background Glow */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"></div>
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <motion.div
+                  key={index}
+                  className="text-center group relative"
+                  initial={{ opacity: 0, scale: 0.5, y: 50 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ delay: index * 0.15, duration: 0.8 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                >
+                  {/* Background Glow */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"></div>
 
-        {/* Card Container */}
-        <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 
+                  {/* Card Container */}
+                  <div
+                    className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 
                         group-hover:border-white/20 transition-all duration-300 
-                        flex flex-col justify-between h-full">
-          {/* Icon */}
-          <motion.div
-            className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 
+                        flex flex-col justify-between h-full"
+                  >
+                    {/* Icon */}
+                    <motion.div
+                      className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 
                        rounded-2xl mb-6 group-hover:from-primary-500/30 group-hover:to-secondary-500/30 
                        transition-all duration-100 backdrop-blur-sm border border-white/10 mx-auto"
-            whileHover={{ rotate: 360, scale: 1.2 }}
-            transition={{ duration: 0.4 }}
-          >
-            <Icon className="h-10 w-10 text-white" />
-          </motion.div>
+                      whileHover={{ rotate: 360, scale: 1.2 }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      <Icon className="h-10 w-10 text-white" />
+                    </motion.div>
 
-          {/* Counter */}
-          <div className="text-4xl lg:text-4xl font-bold mb-3 text-white">
-            <AnimatedCounter
-              end={stat.number}
-              duration={3}
-              delay={index * 0.3}
-              suffix={stat.suffix || ""}
-              className="text-gradient-alt"
-            />
+                    {/* Counter */}
+                    <div className="text-4xl lg:text-4xl font-bold mb-3 text-white">
+                      <AnimatedCounter
+                        end={stat.number}
+                        duration={3}
+                        delay={index * 0.3}
+                        suffix={stat.suffix || ""}
+                        className="text-gradient-alt"
+                      />
+                    </div>
+
+                    {/* Label */}
+                    <div className="text-gray-300 font-bold text-lg sm:text-2xl text-center line-clamp-2">
+                      {stat.label}
+                    </div>
+
+                    {/* Animated Border */}
+                    <motion.div
+                      style={{
+                        background:
+                          "linear-gradient(white, white) padding-box, linear-gradient(135deg, #6366f1, #ec4899) border-box",
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
-
-          {/* Label */}
-          <div className="text-gray-300 font-bold text-lg sm:text-2xl text-center line-clamp-2">
-            {stat.label}
-          </div>
-
-          {/* Animated Border */}
-          <motion.div
-            style={{
-              background:
-                "linear-gradient(white, white) padding-box, linear-gradient(135deg, #6366f1, #ec4899) border-box",
-            }}
-          />
-        </div>
-      </motion.div>
-    );
-  })}
-</div>
-
 
           {/* Bottom CTA */}
           <motion.div
@@ -572,17 +549,9 @@ const Home = () => {
               businesses we’ve proudly worked with.
             </p>
           </motion.div>
-
-          <div className="space-y-8">
-            {/* Row 1 - left to right */}
-            <MarqueeRow items={clients} direction="left" speed={60} />
-            {/* Row 2 - right to left */}
-            <MarqueeRow
-              items={[...clients].reverse()}
-              direction="right"
-              speed={60}
-            />
-          </div>
+          
+            <CircleCarousel items={clients} radius={320} duration={25} />
+          
         </div>
       </section>
 
@@ -629,7 +598,13 @@ const Home = () => {
                       className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${service.gradient} rounded-2xl mb-6 shadow-lg`}
                       // Gentle continuous oscillation for touch devices
                       animate={{ rotate: [0, 6, 0] }}
-                      transition={{ rotate: { duration: 2, repeat: Infinity, ease: "easeInOut" } }}
+                      transition={{
+                        rotate: {
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        },
+                      }}
                       // Desktop interaction
                       whileHover={{ scale: 1.1, rotate: 10 }}
                       // Touch interaction

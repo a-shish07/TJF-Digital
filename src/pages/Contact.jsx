@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { 
   Phone, 
@@ -11,12 +11,20 @@ import {
   Sparkles,
   Rocket,
   ArrowRight,
+  ArrowUpRight,
   CheckCircle,
   Globe,
   Users,
   Award,
   Zap,
-  AlertCircle
+  AlertCircle,
+  ChevronDown,
+  ChevronRight,
+  Monitor,
+  Code,
+  Megaphone,
+  Search,
+  Target
 } from 'lucide-react';
 
 const Contact = () => {
@@ -31,6 +39,22 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [serviceDropdownOpen, setServiceDropdownOpen] = useState(false);
+  const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setServiceDropdownOpen(false);
+        setActiveSubmenu(null);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Reset form function
   const resetForm = useCallback(() => {
@@ -168,30 +192,59 @@ const Contact = () => {
     setErrors({});
     
     try {
-      console.log('Form submitted:', formData);
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      console.log('Submitting form:', formData);
       
-      setIsSubmitted(true);
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: ''
+      const response = await fetch('/contact-handler.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify(formData)
       });
       
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
+      const result = await response.json();
+      
+      if (response.ok && result.success) {
+        console.log('Form submitted successfully');
+        setIsSubmitted(true);
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          service: '',
+          message: ''
+        });
+        
+        // Reset success message after 8 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 8000);
+        
+      } else {
+        // Handle server-side validation errors or other issues
+        console.error('Server error:', result);
+        setErrors({ 
+          submit: result.error || 'Failed to send message. Please try again.' 
+        });
+      }
       
     } catch (error) {
-      console.error('Form submission error:', error);
-      setErrors({ 
-        submit: error.message || 'Something went wrong. Please try again.' 
-      });
+      console.error('Network error:', error);
+      
+      // Check if it's a network error or server error
+      if (error.name === 'TypeError' && error.message.includes('fetch')) {
+        setErrors({ 
+          submit: 'Network error. Please check your internet connection and try again.' 
+        });
+      } else {
+        setErrors({ 
+          submit: 'Something went wrong. Please try again or contact us directly at info@tjfdigital.com' 
+        });
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -222,17 +275,53 @@ const Contact = () => {
     {
       icon: Clock,
       title: 'Business Hours',
-      details: ['Monday - Friday: 9:00 AM - 6:00 PM', 'Saturday: 10:00 AM - 4:00 PM', 'Sunday: Closed']
+      details: ['Monday - Saturday: 10:00 AM - 6:00 PM','Sunday: Closed']
     }
   ];
 
   const services = [
-    'Web Design',
-    'Digital Marketing',
-    'SEO Services',
-    'Graphics Design',
-    'Paid Advertisement',
-    'Other'
+    { 
+      name: 'Web Design & Development',
+      value: 'web-design-development',
+      hasSubmenu: true,
+      subServices: [
+        { name: 'WordPress Websites', value: 'wordpress-websites' },
+        { name: 'Custom Coding Websites', value: 'custom-coding' },
+        { name: 'E-commerce Development', value: 'ecommerce-development' },
+        { name: 'Landing Pages', value: 'landing-pages' }
+      ]   
+    },
+    { 
+      name: 'Digital Marketing', 
+      value: 'digital-marketing'
+    },
+    { 
+      name: 'SEO Services', 
+      value: 'seo-services'
+    },
+    { 
+      name: 'GMB (Google My Business)', 
+      value: 'gmb'
+    },
+    { 
+      name: 'Social Media Marketing', 
+      value: 'social-media-marketing'
+    },
+    { 
+      name: 'Paid Advertisement', 
+      value: 'paid-advertisement',
+      hasSubmenu: true,
+      subServices: [
+        { name: 'Google Ads Management', value: 'google-ads' },
+        { name: 'Facebook/Meta Advertising', value: 'facebook-ads' },
+        { name: 'YouTube Advertising', value: 'youtube-ads' },
+        { name: 'LinkedIn Advertising', value: 'linkedin-ads' }
+      ]
+    },
+    { 
+      name: 'Other', 
+      value: 'other'
+    }
   ];
 
   const offices = [
@@ -266,31 +355,6 @@ const Contact = () => {
         className="relative py-10 bg-mesh-gradient flex items-center justify-center"
         style={{ y }}
       >
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 pattern-grid opacity-20"></div>
-        
-        {/* Floating Orbs */}
-        <motion.div 
-          className="absolute top-20 left-10 w-64 h-64 bg-primary-500/20 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1, 1.3, 1], 
-            rotate: [0, 180, 360],
-            x: [0, 30, 0],
-            y: [0, -20, 0]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute top-40 right-20 w-48 h-48 bg-secondary-500/20 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1.2, 1, 1.2], 
-            rotate: [360, 180, 0],
-            x: [0, -40, 0],
-            y: [0, 25, 0]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-
         <div className="container-max text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -344,11 +408,6 @@ const Contact = () => {
               <a href="tel:+918340429258" className="btn-glow group text-lg px-8 py-4">
                 <Phone size={20} className="mr-3 group-hover:rotate-12 transition-transform duration-300" />
                 <span>Call Now: +91 8340429258</span>
-              </a>
-
-              <a href="mailto:info@tjfdigital.com" className="btn-ghost group text-lg px-6 py-3">
-                <Mail size={20} className="mr-3 group-hover:scale-110 transition-transform duration-300" />
-                <span>Send Email</span>
               </a>
             </motion.div>
           </motion.div>
@@ -565,24 +624,139 @@ const Contact = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.8, duration: 0.5 }}
                     viewport={{ once: true }}
+                    className="relative"
                   >
                     <label htmlFor="service" className="block text-sm font-semibold text-gray-700 mb-3">
                       Service Interested In
                     </label>
-                    <select
-                      id="service"
-                      name="service"
-                      value={formData.service}
-                      onChange={handleChange}
-                      className="w-full px-6 py-4 bg-white border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300 hover:border-primary-300"
+                    
+                    {/* Custom Dropdown Button */}
+                    <div 
+                      ref={dropdownRef}
+                      className="relative"
+                      onBlur={(e) => {
+                        // Close dropdown when focus leaves the entire dropdown area
+                        if (!e.currentTarget.contains(e.relatedTarget)) {
+                          setServiceDropdownOpen(false);
+                        }
+                      }}
                     >
-                      <option value="">Select a service</option>
-                      {services.map((service) => (
-                        <option key={service} value={service}>
-                          {service}
-                        </option>
-                      ))}
-                    </select>
+                      <button
+                        type="button"
+                        onClick={() => setServiceDropdownOpen(!serviceDropdownOpen)}
+                        className={`w-full px-6 py-4 bg-white border-2 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 flex items-center justify-between ${
+                          serviceDropdownOpen
+                            ? 'border-primary-500 ring-2 ring-primary-500'
+                            : 'border-gray-200 hover:border-primary-300 focus:border-primary-500 focus:ring-primary-500'
+                        }`}
+                        aria-haspopup="listbox"
+                        aria-expanded={serviceDropdownOpen}
+                      >
+                        <span className={formData.service ? 'text-gray-900' : 'text-gray-500'}>
+                          {formData.service 
+                            ? (() => {
+                                // Check main services first
+                                const mainService = services.find(s => s.value === formData.service);
+                                if (mainService) return mainService.name;
+                                
+                                // Check sub-services
+                                for (const service of services) {
+                                  if (service.subServices) {
+                                    const subService = service.subServices.find(sub => sub.value === formData.service);
+                                    if (subService) return subService.name;
+                                  }
+                                }
+                                return 'Select a service';
+                              })()
+                            : 'Select a service'
+                          }
+                        </span>
+                        <ChevronDown 
+                          size={20} 
+                          className={`transition-transform duration-200 ${
+                            serviceDropdownOpen ? 'rotate-180' : ''
+                          }`} 
+                        />
+                      </button>
+
+                      {/* Dropdown Menu - Simple with Submenus */}
+                      <AnimatePresence>
+                        {serviceDropdownOpen && (
+                          <motion.div
+                            className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50"
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            {services.map((service) => (
+                              <div key={service.value} className="relative">
+                                <button
+                                  type="button"
+                                  onMouseEnter={() => service.hasSubmenu && setActiveSubmenu(service.value)}
+                                  onMouseLeave={() => !service.hasSubmenu && setActiveSubmenu(null)}
+                                  onClick={() => {
+                                    if (!service.hasSubmenu) {
+                                      setFormData(prev => ({ ...prev, service: service.value }));
+                                      setServiceDropdownOpen(false);
+                                      setActiveSubmenu(null);
+                                      // Clear any service-related errors
+                                      if (errors.service) {
+                                        setErrors(prev => ({ ...prev, service: '' }));
+                                      }
+                                    }
+                                  }}
+                                  className="w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-gray-50 hover:text-primary-600 transition-colors"
+                                >
+                                  <span>{service.name}</span>
+                                  {service.hasSubmenu && (
+                                    <ChevronRight size={16} className="text-gray-400" />
+                                  )}
+                                  {formData.service === service.value && (
+                                    <CheckCircle size={16} className="text-primary-600" />
+                                  )}
+                                </button>
+
+                                {/* Submenu */}
+                                {service.hasSubmenu && activeSubmenu === service.value && (
+                                  <motion.div
+                                    className="absolute left-full top-0 ml-1 w-60 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-60"
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -10 }}
+                                    transition={{ duration: 0.15 }}
+                                    onMouseEnter={() => setActiveSubmenu(service.value)}
+                                    onMouseLeave={() => setActiveSubmenu(null)}
+                                  >
+                                    {service.subServices.map((subService) => (
+                                      <button
+                                        key={subService.value}
+                                        type="button"
+                                        onClick={() => {
+                                          setFormData(prev => ({ ...prev, service: subService.value }));
+                                          setServiceDropdownOpen(false);
+                                          setActiveSubmenu(null);
+                                          // Clear any service-related errors
+                                          if (errors.service) {
+                                            setErrors(prev => ({ ...prev, service: '' }));
+                                          }
+                                        }}
+                                        className="w-full flex items-center justify-between px-4 py-2 text-left text-gray-700 hover:bg-gray-50 hover:text-primary-600 transition-colors"
+                                      >
+                                        <span>{subService.name}</span>
+                                        {formData.service === subService.value && (
+                                          <CheckCircle size={16} className="text-primary-600" />
+                                        )}
+                                      </button>
+                                    ))}
+                                  </motion.div>
+                                )}
+                              </div>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </motion.div>
                 </div>
                 

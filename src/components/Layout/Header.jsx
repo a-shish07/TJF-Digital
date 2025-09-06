@@ -10,7 +10,8 @@ import {
   Globe, 
   Award,
   ChevronDown,
-  ArrowUpRight
+  ArrowUpRight,
+  ChevronRight
 } from 'lucide-react';
 import Logo from '../Logo';
 
@@ -18,6 +19,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const location = useLocation();
 
   const navigation = [
@@ -302,15 +304,105 @@ const Header = () => {
           <AnimatePresence>
             {isMenuOpen && (
               <motion.div
-                className="lg:hidden border-t border-gray-200/50 glass-effect-dark rounded-b-2xl"
+                className="lg:hidden border-t border-purple-200/30 bg-gray-600 rounded-b-3xl shadow-2xl"
                 variants={mobileMenuVariants}
                 initial="initial"
                 animate="animate"
                 exit="exit"
               >
-                <div className="py-6 space-y-2">
+                <div className="py-6 space-y-2 px-4">
                   {navigation.map((item, index) => {
                     const Icon = item.icon;
+                    
+                    if (item.hasDropdown) {
+                      return (
+                        <motion.div
+                          key={item.name}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.1 }}
+                          className="space-y-2"
+                        >
+                          {/* Services Main Button */}
+                          <button
+                            onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                            className={`w-full flex items-center justify-between font-semibold transition-all duration-300 py-3 px-4 rounded-xl group ${
+                              isActive(item.href) || mobileServicesOpen
+                                ? 'text-white bg-gradient-to-r from-purple-400 to-pink-400 shadow-lg shadow-purple-500/30'
+                                : 'text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-purple-600/20 hover:to-pink-600/20 hover:backdrop-blur-lg'
+                            }`}
+                          >
+                            <div className="flex items-center space-x-3">
+                              <Icon size={18} className="group-hover:scale-110 transition-transform duration-300" />
+                              <span>{item.name}</span>
+                            </div>
+                            <ChevronRight 
+                              size={16} 
+                              className={`transition-transform duration-300 ${
+                                mobileServicesOpen ? 'rotate-90' : ''
+                              }`}
+                            />
+                          </button>
+
+                          {/* Services Dropdown */}
+                          <AnimatePresence>
+                            {mobileServicesOpen && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="ml-4 space-y-1 border-l-2 border-purple-400/30 pl-4"
+                              >
+                                {item.dropdownItems.map((dropItem, dropIndex) => (
+                                  <motion.div
+                                    key={dropItem.name}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: dropIndex * 0.05 }}
+                                  >
+                                    <Link
+                                      to={dropItem.href}
+                                      className="flex items-center justify-between py-2.5 px-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-300 group text-sm"
+                                      onClick={() => {
+                                        setIsMenuOpen(false);
+                                        setMobileServicesOpen(false);
+                                      }}
+                                    >
+                                      <span className="font-medium">{dropItem.name}</span>
+                                      <ArrowUpRight
+                                        size={12}
+                                        className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                      />
+                                    </Link>
+                                    
+                                    {/* Sub-services */}
+                                    {dropItem.children && (
+                                      <div className="ml-4 space-y-1 mt-1">
+                                        {dropItem.children.map((child) => (
+                                          <Link
+                                            key={child.name}
+                                            to={child.href}
+                                            className="flex items-center py-1.5 px-2 text-gray-400 hover:text-purple-300 rounded transition-all duration-300 text-xs"
+                                            onClick={() => {
+                                              setIsMenuOpen(false);
+                                              setMobileServicesOpen(false);
+                                            }}
+                                          >
+                                            <span>• {child.name}</span>
+                                          </Link>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </motion.div>
+                                ))}
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </motion.div>
+                      );
+                    }
+                    
                     return (
                       <motion.div
                         key={item.name}
@@ -322,8 +414,8 @@ const Header = () => {
                           to={item.href}
                           className={`flex items-center space-x-3 font-semibold transition-all duration-300 py-3 px-4 rounded-xl group ${
                             isActive(item.href)
-                              ? 'text-white bg-primary-600 shadow-glow'
-                              : 'text-gray-300 hover:text-white hover:bg-primary-600/20'
+                              ? 'text-white bg-gradient-to-r from-purple-600 to-pink-600 shadow-lg shadow-purple-500/30'
+                              : 'text-gray-300 hover:text-white hover:bg-gradient-to-r hover:from-purple-600/20 hover:to-pink-600/20 hover:backdrop-blur-lg'
                           }`}
                           onClick={() => setIsMenuOpen(false)}
                         >
@@ -333,6 +425,7 @@ const Header = () => {
                       </motion.div>
                     );
                   })}
+                  
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -341,7 +434,7 @@ const Header = () => {
                   >
                     <Link
                       to="/contact"
-                      className="btn-glow w-full justify-center"
+                      className="btn-glow w-full justify-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg shadow-purple-500/30"
                       onClick={() => setIsMenuOpen(false)}
                     >
                       <span>Start Your Project</span>

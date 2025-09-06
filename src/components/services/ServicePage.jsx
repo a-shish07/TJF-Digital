@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   CodingHero,
+  WordPressHero,
   SEOHero,
   DigitalMarketingHero,
   GMBHero,
@@ -251,6 +252,8 @@ const ServicePage = ({
       {/* Hero */}
       {heroVariant === 'coding' ? (
         <CodingHero hero={hero} badge={badge} />
+      ) : heroVariant === 'wordpress' ? (
+        <WordPressHero hero={hero} badge={badge} />
       ) : heroVariant === 'seo' ? (
         <SEOHero hero={hero} badge={badge} />
       ) : heroVariant === 'digital-marketing' ? (

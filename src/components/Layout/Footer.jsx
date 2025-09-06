@@ -28,27 +28,30 @@ const Footer = () => {
   const [isSubscribed, setIsSubscribed] = useState(false);
 
   const services = [
-    { 
-      name: "Web Design & Development", 
+    {
+      name: "Web Design & Development",
       href: "/services/web-design",
       children: [
         { name: "WordPress Website", href: "/services/web-design/wordpress" },
-        { name: "Coding Website", href: "/services/web-design/coding" }
-      ]
+        { name: "Coding Website", href: "/services/web-design/coding" },
+      ],
     },
     { name: "Digital Marketing", href: "/services/digital-marketing" },
     { name: "SEO Services", href: "/services/seo" },
     { name: "GMB (Google My Business)", href: "/services/gmb" },
-    { name: "Social Media Marketing", href: "/services/social-media-marketing" },
-    { 
-      name: "Paid Advertisement", 
+    {
+      name: "Social Media Marketing",
+      href: "/services/social-media-marketing",
+    },
+    {
+      name: "Paid Advertisement",
       href: "/services/paid-ads",
       children: [
         { name: "Google Ads", href: "/services/paid-ads/google" },
         { name: "LinkedIn Ads", href: "/services/paid-ads/linkedin" },
-        { name: "Meta Ads", href: "/services/paid-ads/meta" }
-      ]
-    }
+        { name: "Meta Ads", href: "/services/paid-ads/meta" },
+      ],
+    },
   ];
 
   const quickLinks = [
@@ -148,14 +151,29 @@ const Footer = () => {
             viewport={{ once: true }}
           >
             <div className="space-y-6 pr-20">
-              <motion.div
-                className="flex items-center space-x-3"
-                whileHover={{ scale: 1.05 }}
-              >
-                <Link to="/">
-                  <Logo size="lg" theme="light" showText={true} className="md:scale-105 lg:scale-110" />
-                </Link>
-              </motion.div>
+              <div className="space-y-1">
+                <motion.div
+                  className="flex items-center space-x-3"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <Link to="/">
+                    <Logo
+                      size="lg"
+                      theme="light"
+                      showText={true}
+                      className="md:scale-105 lg:scale-110"
+                    />
+                  </Link>
+                </motion.div>
+                <div className="flex justify-start ml-10">
+                  <span className="text-base text-gray-400 font-medium tracking-wider">
+                    Powered by{" "}
+                    <span className="font-semibold text-gray-300">
+                      TJF IT SOLUTION PVT LTD
+                    </span>
+                  </span>
+                </div>
+              </div>
 
               <p className="text-lg text-gray-300 leading-relaxed">
                 TJFDigital is a digital marketing agency specializing in
@@ -232,7 +250,10 @@ const Footer = () => {
                             className="flex items-center justify-between text-gray-300 hover:text-white transition-all duration-300 py-1.5 px-3 rounded-lg hover:bg-white/5"
                           >
                             <span className="text-sm">{child.name}</span>
-                            <ArrowRight size={12} className="opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                            <ArrowRight
+                              size={12}
+                              className="opacity-0 group-hover:opacity-100 transition-all duration-300"
+                            />
                           </Link>
                         ))}
                       </div>
@@ -269,7 +290,8 @@ const Footer = () => {
                     href="tel:+918340429258"
                     className="text-white font-semibold hover:text-primary-400 transition-colors duration-300"
                   >
-                    +91 8340429258
+                    +91 8340429258 <br />
+                    +91 8556020151
                   </a>
                 </div>
               </motion.div>

@@ -84,17 +84,17 @@ const About = () => {
     education: "MBA (Marketing), Delhi University",
     image: AbdulPhoto,
     description:
-      "Dr. Abdul Quadir is a dynamic force behind our digital marketing initiatives. As Secretary and Co-Founder, he spearheads awareness campaigns and community outreach programs, blending marketing insight with strategic vision to create lasting impact on public well-being.",
+      "Dr. Abdul Quadir is a seasoned business leader with over a decade of experience in digital marketing. As Director, he drives the company’s marketing strategy, brand positioning, and growth initiatives. With a strong background in MBA (Marketing) and a proven track record in building impactful campaigns, he combines strategic vision with operational excellence to strengthen the company’s market presence and long-term success.",
   },
   {
     name: "Aadil Saan",
     role: "Director",
-    specialization: "",
+    specialization: "Team Management & Client Relations",
     experience: "10+ Years",
     education: "Btech (ECE), Punjab University",
     image: Aadil,
     description:
-      "Aadil Saan ensures financial transparency and operational excellence within the trust. With deep roots in social work and community engagement, he is instrumental in building trust with donors and driving grassroots-level change through effective resource management.",
+      "Aadil Saan ensures financial transparency and operational excellence within the trust. With deep roots in social work and community engagement, he is instrumental in building trust with clients and driving grassroots-level change through effective resource management.",
   }
 ];
 
@@ -149,7 +149,7 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
       expertise: 'Visual Design & Branding',
     },
      {
-      name: 'Ehtesham Ali',
+      name: 'Aashish Kumar',
       role: 'Graphic Designer',
       expertise: 'Visual Design & Branding',
     },
@@ -307,7 +307,7 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
                       <Star key={star} size={18} className="text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <p className="text-sm text-gray-600 font-semibold">Meet Our Expert Team</p>
+                  < p className="text-sm text-gray-600 font-semibold">Meet Our Expert Team</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -538,8 +538,13 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
               </motion.div>
             ))}
           </div>
+
+           <div className="text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-bold font-serif text-center mt-10">
+              Digital Expert Family
+            </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-24">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 mt-12">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
@@ -550,18 +555,22 @@ const TrusteeImage = ({ src, alt, name, className = "" }) => {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05, y: -5 }}
               >
-                <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 group-hover:border-primary-200">
+                <div className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 group-hover:border-primary-200 h-full flex flex-col">
                   <motion.div
-                    className="text-6xl mb-6"
+                    className="text-5xl mb-4 flex-shrink-0"
                     whileHover={{ scale: 1.2, rotate: 10 }}
                     transition={{ duration: 0.3 }}
                   >
                     {member.avatar}
                   </motion.div>
                   
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                  <p className="text-primary-600 font-semibold mb-2">{member.role}</p>
-                  <p className="text-gray-600 text-base mb-4">{member.expertise}</p>
+                  <div className="flex-grow flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2">{member.name}</h3>
+                      <p className="text-primary-600 font-semibold mb-2 text-sm line-clamp-1">{member.role}</p>
+                    </div>
+                    <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">{member.expertise}</p>
+                  </div>
                 </div>
               </motion.div>
             ))}
