@@ -153,29 +153,36 @@ const Home = () => {
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart Inc.",
+      name: "Ashtha",
+      role: "CEO, Reya Interiors",
       content:
         "TJF Digital transformed our online presence completely. Their strategic approach and attention to detail exceeded our expectations.",
       rating: 5,
       image: "👩‍💼",
     },
     {
-      name: "Michael Chen",
-      role: "Marketing Director",
+      name: "Rahul Singh",
+      role: "Founder, Total Admission Solution",
       content:
         "Outstanding results! Our website traffic increased by 300% and conversions by 150% within 6 months of working with TJF Digital.",
       rating: 5,
       image: "👨‍💼",
     },
     {
-      name: "Emma Rodriguez",
-      role: "Startup Founder",
+      name: "Dharmendra Kumar",
+      role: "Director, JMD Travels",
       content:
         "The team at TJF Digital is phenomenal. They understand business goals and translate them into exceptional digital experiences.",
       rating: 5,
       image: "👩‍🚀",
     },
+    {
+      name:"Gaurav",
+      role:"Founder, Professional Cleaning",
+      content:"TJF Digital's expertise in SEO and digital marketing helped us dominate our local market. Highly recommend their services!",
+      rating:5,
+      image:"👨‍🔧",
+    }
   ];
 
   const features = [
@@ -286,26 +293,6 @@ const Home = () => {
       name: "React",
       logo: new URL("../assets/photo9.jpg", import.meta.url).href,
     },
-    // {
-    //   name: "Aadil",
-    //   logo: new URL("../assets/agancia.jpg", import.meta.url).href,
-    // },
-    // {
-    //   name: "Abdul",
-    //   logo: new URL("../assets/foodie.jpg", import.meta.url).href,
-    // },
-    // {
-    //   name: "React",
-    //   logo: new URL("../assets/gulmohar.jpg", import.meta.url).href,
-    // },
-    // {
-    //   name: "Aadil",
-    //   logo: new URL("../assets/keptown.jpg", import.meta.url).href,
-    // },
-    // {
-    //   name: "Abdul",
-    //   logo: new URL("../assets/maa janki.jpg", import.meta.url).href,
-    // },
   ];
 
 

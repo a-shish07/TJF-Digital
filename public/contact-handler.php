@@ -169,7 +169,7 @@ $clean_data = $validation['data'];
 
 // Email configuration
 $to_email = 'info@tjfdigital.com';
-$from_email = 'info@tjfdigital.com'; // Use existing email account
+$from_email = 'info@tjfdigital.com'; 
 $reply_to = $clean_data['email'];
 $subject = 'New Contact Form Submission - TJF Digital';
 
